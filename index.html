@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr" >
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Angular Material style sheet -->
+        <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/angular-material.min.css">
+        <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/custom.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="http://maps.google.com/maps/api/js?key=AIzaSyBq90AoNN8Lz4Eqfi88ZcH6GPWIeu1sF1g&libraries=placeses,visualization,drawing,geometry,places&v=3.exp"></script>
+        <script src="wp-content/themes/ecocitoyen/js/moment.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/angular.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/angular-cookies.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/angular-animate.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/angular-aria.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/angular-messages.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/ng-map.min.js"></script>
+        <!-- Angular Material Library -->
+        <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
+        <script src="wp-content/themes/ecocitoyen/js/ecocitylity.js"></script>
+        <meta property="og:type" content="article" />
+<meta property="og:url" content=
+"{{og.url}}" />
+<meta property="article:author" content="{{og.author}}" />
+<meta property="article:publisher" content="{{og.author}}" />
+<meta property="og:title" content="{{og.title}}" />
+<meta property="og:description" content="{{og.description}}" />
+<meta property="og:image" content="{{og.image}}" />
+<meta name="twitter:site" content="{{twitter.site}}">
+<meta name="twitter:title" content="{{twitter.title}}">
+<meta name="twitter:description" content="{{twitter.description}}">
+<meta name="twitter:creator" content="{{twitter.author}}">
+<meta name="twitter:image" content="{{twitter.image}}">
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+<meta name="description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !" />
+
+    </head>
+    <body ng-app="BlankApp" ng-cloak     padding-left: 10px;>
+        <div ng-controller="ecocitoyenCtrl as vm"  layout="column"   style="height:100%;" ng-cloak>
+             <section consent="cookie-disclaimer">
+  <section ng-if="$consent.hasNotAgreedYet()">
+    <p>En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies pour réaliser des statistiques de
+
+visites. Pour en savoir plus sur les cookies</p>
+    <button ng-click="$consent.agree();">Ok, j'ai compris</button>
+  </section>
+</section>
+            <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+
+                <h1  class="visuallyhidden">Eco-map la carte collaborative gratuite des
+
+points éco-citoyens de France, par région, département et ville.</h1>
+                <img src="wp-content/themes/ecocitoyen/images/logo_eco.png" width="180"/>
+
+                 <md-input-container class="md-block searchCity " flex-gt-sm hide-xs>
+                <md-icon class="iconSearch" md-svg-src="wp-content/themes/ecocitoyen/images/icons/searchIcon.svg" md-menu-align-target></md-icon>
+
+                <input type="text" places-auto-complete size=80
+                ng-model="vm.address"
+                component-restrictions="{country:'fr'}"
+                types="{{types}}"
+                aria-label = "recherche"
+                on-place-changed="vm.placeChanged()" />
+                </md-input-container>
+<div  hide-sm  hide-xs class="menu-demo-container" layout-align="center center" layout="column">
+
+                 <md-menu class="menuPartager" >
+      <md-button class="md-raised" aria-label="Open phone interactions menu" class="" ng-click="vm.openMenu($mdOpenMenu, $event)">
+        <md-icon md-menu-origin md-svg-src="wp-content/themes/ecocitoyen/images/icons/share.svg"></md-icon> Partager
+      </md-button>
+      <md-menu-content width="4" class="menuPartager">
+        <md-menu-item>
+          <md-button ng-click="shareFb()">
+            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/facebook.svg" md-menu-align-target></md-icon>
+            Facebook
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button  ng-click="shareTwitter()">
+            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/twitter.svg"></md-icon>
+            Twitter
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button  ng-click="shareUrl()">
+            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/url.svg"></md-icon>
+            URL
+          </md-button>
+        </md-menu-item>
+
+      </md-menu-content>
+    </md-menu>
+</div>
+<div hide-sm  hide-xs    class="containerButtonProject">
+
+  <md-button  ng-href="{{getLinkProjet()}}" class="md-raised buttonProject" aria-label="Open phone interactions menu" class=""  >
+
+  <!--  <a style="width:100%,height:100%" ng-if="isTop()" href="#editoLeProjet"-->
+  <div ng-if="isTop()">
+    <img class="mondeOk" src="wp-content/themes/ecocitoyen/images/icons/monde.png" />
+    <img class="mondeHover" src="wp-content/themes/ecocitoyen/images/icons/monde_hover.png" />
+    Le projet
+  </div>
+
+      <!-- </a> -->
+
+    <!--  <a style="width:100%,height:100%"  ng-if="isBottom()" > -->
+      <div ng-if="isBottom()">
+        <img class="mondeOk" src="wp-content/themes/ecocitoyen/images/icons/monde.png" />
+        <img class="mondeHover" src="wp-content/themes/ecocitoyen/images/icons/monde_hover.png" />
+
+      La carte
+      </div>
+    <!--</a> -->
+      </md-button>
+       </div>
+   <div hide-gt-sm >
+    <p><md-button class="md-raised " aria-label="Open menu" class=""   ng-click="openRightMenu()">
+       Voir le menu
+      </md-button></p>
+
+   </div>
+
+            </div>
+            </md-toolbar>
+            <section layout="row" flex>
+
+
+                <md-content flex layout-padding class="main">
+                <div style="text-align: center;top: 56px;"  ng-hide="timeoutLoad" ng-show="loading[0] || loading[1]">
+                    Chargement en cours...
+                    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+                </div>
+                <div style="text-align: center;top: 56px;" ng-show="timeoutLoad" >
+                    Une erreur est survenue lors du chargement des données. N'hésitez pas à vous rapprocher de nous afin de nous le remonter.
+                    Veuillez nous excuser pour la gêne occassionnée.
+                </div>
+                <p style="padding:0;    display: inline;" id="laCarte"></p>
+                <ng-map style="height:570px;" default-style="false" zoom="10" center="{{center}}" lazy-init="true" >
+
+                <heatmap-layer   ng-hide="true" ng-show="poiVisible" id="poi" data="heatmapMarqueurs" ></heatmap-layer>
+
+                <marker ng-hide="false" icon="{{point.icon}}"   ng-repeat="point in points  |  filterMultiple:{cate:filtreArray || '!!'} | filter: dateRangeFilter('date', startDate, endDate) | filter:sizeCheck() track by point.id " position="{{point.geoloc.lat}},{{point.geoloc.lng}}"  title="{{point.cate}}"></marker>
+                </ng-map>
+
+<h2 id="editoLeProjet">Le projet</h2>
+                
+
+
+  <h2>Une carte écologique et citoyenne</h2>
+<p>Eco‐map répertorie tous les points éco‐citoyens de France sur une seule carte. Les points<br />
+sont répartis en fonction de 12 catégories :</p>
+<ul>
+<li>Poubelles de verre</li>
+<li>Stations de location de voitures électriques</li>
+<li>Stations de location de vélos</li>
+<li>Déchèteries</li>
+<li>Composts</li>
+<li>Relais vêtements</li>
+<li>Aires de co‐voiturage</li>
+<li>Containers de tri sélectif</li>
+<li>Bennes à cartons</li>
+<li>Pedibus</li>
+<li>Bornes de recharge pour voitures électriques</li>
+<li>Divers</li>
+</ul>
+<h2>Une action de tous pour l’environnement</h2>
+<p>Cette carte éco‐citoyenne se complète grâce à un système de CrowdData : se sont les</p>
+<p>données remontées par tous les citoyens qui, unies, constituent une carte précise et fidèle !</p>
+<p>Participer à l’agrémentation de cette Eco‐map est très simple : tous les citoyens peuvent</p>
+<p>apporter leur pierre à l’édifice en téléchargeant l’application mobile CityLity sur Android ou</p>
+<p>sur iOS. (+ visuel du screenshot eco‐citoyen)</p>
+<p>Ensuite, où qu’ils soient, les utilisateurs peuvent signaler en 3 clics tous les points éco‐</p>
+<p>citoyens qui les entourent ou qui se trouvent sur leur chemin. Automatiquement</p>
+<p>géolocalisés, ils n’ont plus qu’à sélectionner la catégorie du point éco‐friendly, le prendre en</p>
+<p>photo et ajouter des détails si besoin. Les points s’ajoutent au fur et à mesure sur Eco‐map</p>
+<p>qui les répertorie tous en fonction de leur localisation géographique.
+</p>
+<p>Eco‐map offre plusieurs tris possibles pour que l’information soit claire et ludique :</p>
+<ul>
+<li> L’utilisateur peut sélectionner la ou les catégories de points qu’il souhaite voir
+<p>afficher sur la carte</li>
+<li> L’utilisateur peut également trier par chronologie : s’il déplace le curseur au fil des
+<p>mois, il voit apparaître l’évolution du nombre de points répertoriés.</li>
+</ul>
+<h2>Une impulsion en faveur de l’écologie et du développement durable pour</p>
+<p>les villes</h2>
+<p>Construire une carte qualifiée de tous les points eco‐friendly de France permet de</p>
+<p>sensibiliser les citoyens et d’encourager les villes à s’inscrire dans une démarche écologique.</p>
+<p>De manière ludique, Eco‐map permet de comparer et de mettre en compétition les villes de</p>
+<p>France. Cela permet d’inciter les citoyens à répertorier le plus de points écologiques pour</p>
+<p>placer leur ville en tête, et de donner aux villes une motivation supplémentaire pour devenir</p>
+<p>éco‐citoyennes.</p>
+<p>Cette carte permet également aux citoyens, qu’ils soient résidents ou simplement de</p>
+<p>passage dans une ville, de retrouver l’information dont ils ont besoin : la poubelle de verre la</p>
+<p>plus proche ? Une borne de recharge pour voiture électrique à proximité ? Tout est sur Eco‐</p>
+<p>map !</p>
+<p>Cette accessibilité à l’information géolocalisée permet d’encourager le tri sélectif. Un</p>
+<p>citoyen, plutôt que de choisir la solution de facilité non écologique, peut trouver très</p>
+<p>rapidement les renseignements sur les poubelles de tris les plus proches et n’aura plus de</p>
+<p>réticence ou de perte de temps à être un bon éco‐citoyen !</p>
+<p>Cette carte est actuellement disponible sur la France, mais nous espérons pouvoir très</p>
+<p>prochainement l’ouvrir à l’Europe puis à tous les pays du monde !</p>
+<h2>Un projet pour l’écologie initié par CityLity</h2>
+<p>Eco‐map est une carte créée par CityLity, une startup née en mai 2014 qui développe une</p>
+<p>application mobile : CityLity. Cette application est conçue pour faciliter le quotidien des</p>
+<p>citoyens, en les mettant en relation avec le gestionnaire du lieu dans lequel ils se trouvent :</p>
+<p>en ville c’est la mairie, et dans leur immeuble il s’agit du gestionnaire (syndic ou bailleur).</p>
+<p>L’application est un moyen de communication et de diffusion de l’information :</p>
+<ul>
+<li>Ascendante : l’utilisateur transmet de l’information au gestionnaire (déclaration</p>
+<p>d’incidents, demande d’intervention, etc.)</li>
+<li>Descendante : le gestionnaire et les acteurs urbains (commerce, associations)
+<p>publient de l’information pertinente à l’intention de l’utilisateur (notifications de</p>
+<p>travaux, planning d’évènements, etc.)</li>
+<li>Transversale : localisé dans son immeuble, l’utilisateur peut échanger avec ses voisins
+<p>(plateforme d’entraides, communication ciblée, etc)</li>
+</ul>
+<p>En janvier 2016, l’application mobile a pris un tournant écologique en ajoutant une nouvelle</p>
+<p>fonctionnalité : « éco‐citoyen ». André May, co‐fondateur et président de CityLity, explique :</p>
+<p>« Suite aux réflexions autour de la COP 21, nous avons voulu donner à CityLity une</p>
+<p>dimension écologique à l’application et impliquer le citoyen dans cette démarche. À travers</p>
+<p>cette fonctionnalité, nous souhaitons l’aider à devenir un éco‐citoyen exemplaire et nous lui</p>
+<p>permettons de contribuer à l’aboutissement de cette première carte géographique éco‐</p>
+<p>citoyenne ». En février 2016, déjà plus de 1000 points eco‐friendly avaient été répertoriés !</p>
+
+
+ 
+              <!--  <div layout="row" flex="noshrink" layout-align="center center" class="layout-align-center-center layout-row flex-noshrink">
+
+      </div>-->
+
+
+                </md-content>
+                <md-sidenav  md-is-locked-open="$mdMedia('gt-sm')" class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+ <div hide-gt-sm >
+
+
+                 <md-menu style="" class="menuPartager" >
+      <md-button class="md-raised" aria-label="Open phone interactions menu" class="" ng-click="vm.openMenu($mdOpenMenu, $event)">
+        <md-icon md-menu-origin md-svg-src="wp-content/themes/ecocitoyen/images/icons/share.svg"></md-icon> Partager
+      </md-button>
+      <md-menu-content width="4" class="menuContent">
+        <md-menu-item>
+          <md-button ng-click="shareFb()">
+            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/facebook.svg" md-menu-align-target></md-icon>
+            Facebook
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button  ng-click="shareTwitter()">
+            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/twitter.svg"></md-icon>
+            Twitter
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button  ng-click="shareUrl()">
+            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/url.svg"></md-icon>
+            URL
+          </md-button>
+        </md-menu-item>
+
+      </md-menu-content>
+    </md-menu>
+
+<div class="containerButtonProject">
+
+  <md-button class="md-raised buttonProject" aria-label="Open phone interactions menu" href="#editoLeProjet" class="" >
+      <img src="wp-content/themes/ecocitoyen/images/icons/monde.png" /> Le projet
+      </md-button>
+       </div>
+
+   </div>
+                <md-content layout-padding>
+
+                <div class="sliderRight">
+                  <p class="dateSliderDebut"> Janv. 2016 </p>
+                    <p class="dateSliderFin"> Aujourd'hui </p></div>
+                <div class="divSliderContainer">
+
+                    <md-slider-container>
+                    <md-slider flex min="0" max="{{dates.length-1}}"  ng-model="dateSlider"  aria-label="red" id="red-slider"></md-slider>
+                    </md-slider-container>
+                </div>
+                <md-divider ></md-divider>
+                  <div ng-hide="mapSelector == 'poiHeatmap'">
+                <div class="selectAllZone">
+                <md-checkbox   ng-model="checkboxCate" ng-click="selectAll();"
+                 aria-label="Checkbox 1">
+                Sélectionner tout
+                </md-checkbox>
+            </div>
+            <div class="cateArea">
+                <div class="divButton" ng-repeat="cate in cates track by $index  " >
+<md-button class="md-fab button-{{iconCate[cate]}}" aria-label="{{cate}}"   ng-class="cateStyle[$index]" ng-click="add(cate, $index)">
+<img class="png-icon" src="wp-content/themes/ecocitoyen/images/icons/{{iconCate[cate]}}.png" style="">
+                 </md-button>
+
+                 <h2 class="labelCate">{{cate}}</h2>
+                 <h3 class="visuallyhidden">{{cateH3[$index]}}</h3>
+                </div>
+            </div>
+          </div>
+           <md-radio-group ng-model="mapSelector" ng-change="change()" class="radioGroup">
+                <md-list ng-cloak class="showHideList">
+
+ <md-list-item>
+
+  <p> Points éco-citoyens </p><md-radio-button value="poi" class="md-primary"></md-radio-button>
+
+  </md-list-item>
+  <!-- <md-subheader class="md-no-sticky"> Cartes de chaleur</md-subheader>-->
+ <!--<md-list-item>
+ <md-checkbox class="md-secondary" ng-true-value="true"
+                ng-false-value="false" ng-click="controlHeatmapPoi()" ng-model="heatmapPoiVisible"></md-checkbox>
+    <p> Points écocitoyens </p>
+
+  </md-list-item> -->
+  <md-list-item>
+ <!-- <md-checkbox class="md-secondary" ng-true-value="true"
+                ng-false-value="false" ng-click="controlHeatmapPoi()" ng-checked="heatmapPoiVisible"></md-checkbox>-->
+
+   <p> Carte de densité </p> <md-radio-button value="poiHeatmap" class="md-primary"> </md-radio-button>
+
+  </md-list-item>
+  <!--<md-list-item>
+  <md-checkbox class="md-secondary" ng-true-value="true"
+                ng-false-value="false" ng-click="controlHeatmapDensite()" ng-model="heatmapDensiteVisible"></md-checkbox>
+    <p> Densité de population </p>
+
+  </md-list-item>-->
+</md-list>
+{{init()}}
+<div ng-show="showDebug">
+                <md-checkbox ng-true-value="true"
+                ng-false-value="false" ng-model="heatmap" aria-label="Checkbox 1">
+                Heatmap densité de population
+                </md-checkbox>
+                <md-checkbox   ng-true-value="true"
+                ng-false-value="false" aria-label="Checkbox 1">
+                Marqueurs
+                </md-checkbox>
+                <md-button ng-click="infoHeatmap()" >Click</md-button>
+                <md-button ng-click="disableMap()" >disableHeatmap</md-button>
+                <md-button ng-click="ableMap()" >ableHeatmap</md-button>
+                <md-button ng-click="radiusMoins()" >radius -</md-button>
+                <md-button ng-click="radiusPlus()" >radius +</md-button>
+                  <md-button ng-click="info()" >info +</md-button>
+            </div>
+                </md-content>
+                </md-sidenav>
+
+              </section>
+            <md-toolbar id="footer" class="md-hue-2">
+              <div id="license-footer" flex="" class="ng-binding flex">
+                      <p>Copyright 2016 - <a href="#" ng-click="openML();">Mentions légales</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
+              </div>
+            </md-toolbar>
+             <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-76518787-1', 'auto');ga('send', 'pageview');
+
+</script>
+            </body>
+            </html>

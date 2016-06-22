@@ -1,0 +1,399 @@
+.md-activated {
+    background-color: rgba(158,158,158,0.2);
+}
+
+section.layout-row {
+	padding-top: 11px;
+}
+
+.layout-padding{
+	padding: 0;
+
+}
+md-toolbar.md-hue-2:not(.md-menu-toolbar) {
+	background-color: #f6f7f7;
+}
+.layout-padding> ng-map {
+	padding: 0px;
+}
+ng-map {
+	width: 95%;
+	height: 90%;
+	border: 4px solid white;
+	padding: 0px;
+	margin: 0 auto;
+	box-shadow: 8px 8px 12px #aaa;
+}
+body {
+	background-color: #f6f7f7;
+}
+
+.main {
+	background-color: #f6f7f7;
+}
+
+.md-button.md-fab {
+width: 50px;
+height: 50px;
+}
+.md-sidenav.md-locked-open.md-closed.md-sidenav-right {
+position: absolute;
+padding: 0px 15px;
+}
+
+.md-fab.button-voitureelec {
+	background-color: #ffcc00;
+}
+
+.md-fab.button-poubelleverre {
+	background-color: #ef3f59;
+}
+
+.md-fab.button-velo {
+	background-color: #00ceac;
+}
+
+.md-fab.button-compost {
+	background-color: #6b4a3c;
+}
+
+.md-fab.button-covoiturage {
+	background-color: #e8591b;
+}
+.md-fab.button-decheterie {
+	background-color: #00a1b0;
+}
+.md-fab.button-borneelec {
+	background-color: #ffb500;
+}
+.md-fab.button-bennecarton {
+	background-color: #9b66b3;
+}
+.md-fab.button-pedibus {
+	background-color: #33569e;
+}
+
+
+.md-fab.button-triselectif {
+	background-color: #ed3600;
+}
+
+.md-fab.button-relais {
+	background-color: #6eb13a;
+}
+.md-fab.button-divers {
+	background-color: #bbb0ae;
+}
+
+.divButton {
+padding: 0px 5px;
+display: inline-block;
+width: 29%;
+text-align: center;
+}
+
+.labelCate{
+	font-size: 12px;
+	text-align: center;
+	margin-top: 2px;
+	font-weight: normal;
+}
+.md-sidenav-right md-toolbar{
+	background-color: #ffffff;
+	color: grey;
+	text-align: center;
+	padding-left: 112px;
+    font-size: 33px;
+}
+
+
+md-sidenav.md-locked-open.md-closed.md-sidenav-right {
+margin-right: 20px;
+padding: 0px 15px;
+}
+
+md-slider .md-track-container {
+	height: 4px;
+}
+
+.md-track-container .md-track.md-track-fill {
+	background-color: #6eb13a;
+}
+md-toolbar.md-hue-2:not(.md-menu-toolbar) {
+	background-color: #f6f7f7;
+}
+
+.md-track-ticks {
+	display: none;
+}
+
+md-slider.md-default-theme .md-thumb:after, md-slider .md-thumb:after {
+	border-color: grey;
+	background-color: white;
+}
+.dateSliderDebut {
+	float: left;
+	margin-bottom: 10px;
+}
+.dateSliderFin {
+	float: right;
+	margin-bottom: 10px;
+}
+
+.divSliderContainer {
+	padding-top: 15px;
+}
+ .layout-padding>.divButton {
+ 	padding-left: 2px;
+ 	padding-right: 2px;
+ }
+
+button.md-fab.unchecked {
+    background-color: rgba(0,0,0,0.12);
+}
+#license-footer {
+  background-color:#6eb13a;
+  max-height: 42px;
+  font-size: 16px;
+}
+
+#license-footer p {
+	text-align: center;
+	color: rgba(255,255,255,0.65);
+}
+
+#license-footer p a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.showHideList md-list-item {
+	background-color: #6eb13a;
+	border-top: 1px solid white;
+	margin-bottom: 0;
+}
+.showHideList p {
+	color: white;
+}
+
+.md-button.md-fab {
+	line-height: 13px;
+
+}
+.menuPartager button {
+	background-color: white;
+	color: grey;
+	height: 50px;
+}
+ .md-menu-demo {
+  padding: 24px; }
+.menu-demo-container {
+  min-height: 200px; }
+
+.menuPartager .md-button {
+	 /*padding: 0px 22px;*/
+}
+.menuPartager .md-button g{
+	fill: #87949c;
+}
+
+.menuPartager .md-button:hover g{
+  fill: white;
+}
+ .menuPartager md-icon {
+ 	margin-right: 7px;
+ }
+ .menuPartager .md-button span {
+ 	color: #87949c;
+ }
+md-menu-content button md-icon svg g {
+	fill: #87949c;
+}
+md-menu-content button span {
+	color: #87949c;
+}
+.containerButtonProject button.buttonProject md-icon g{
+	fill: #87949c;
+}
+.containerButtonProject button.buttonProject {
+	color: #87949c;
+}
+
+.buttonProject img {
+	vertical-align: middle;
+	width: 24px;
+}
+.buttonProject {
+	padding: 7px 18px
+}
+
+md-icon.iconSearch g path {
+	fill:#87949c;
+}
+.searchCity {
+	margin-top: 50px;
+    margin-left: 50px;
+}
+md-dialog {
+	min-width: 333px;
+}
+
+.md-dialog-container .md-toolbar-tools {
+	background-color: #6eb13a;
+}
+.md-open-menu-container {
+width: 147px;
+	}
+@media (min-width: 960px) {
+
+
+	md-menu-content[width="4"] {
+		width: 148px;
+		min-width: 148px;
+		margin-right: 15px;
+	}
+	md-toolbar .menuPartager {
+    width:166px;
+    margin-left: -3px;
+    position: relative;
+
+	}
+  	md-toolbar .menuPartager button {
+      margin-left: -7px;
+          width: 138px;
+    }
+}
+
+md-sidenav md-toolbar {
+	min-height: 40px;
+}
+.md-sidenav-right md-divider {
+	padding: 1px;
+}
+
+.md-sidenav-right .sliderRight {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.md-sidenav-right .selectAllZone {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.md-sidenav-right md-checkbox {
+	margin-bottom: 0px;
+}
+
+.md-sidenav-right .labelCate {
+	margin-bottom: 0px;
+}
+
+.png-icon {
+	left: -5px;
+    position: relative;
+}
+section[consent="cookie-disclaimer"] {
+    background-color: rgba(76, 216, 33, 0.70);
+   	position: fixed;
+    /* top: 0; */
+    z-index: 30000000;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px
+}
+
+section[consent="cookie-disclaimer"] h1 {
+  margin: 0;
+}
+
+.visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+.cateArea .divButton .png-icon{
+	width: 50px;
+	height: 50px;
+
+}
+.cateArea .divButton:nth-child(12) .png-icon{
+	width: 35px;
+	height: 35px;
+	left: 0px;
+}
+
+.showHideList md-radio-button .md-container .md-on {
+	    background-color: white;
+	    border-color: white;
+}
+
+.showHideList md-radio-button .md-container .md-off {
+	   border-color: white;
+}
+md-radio-button:not([disabled]).md-primary.md-checked .md-off {
+    border-color: white;
+}
+
+.md-button.md-raised:not([disabled]):hover , a.md-button.buttonProject.md-raised:hover {
+  background-color: rgba(110, 177,58,1);
+  color: white;
+}
+
+a.md-button.buttonProject.md-raised:hover
+.md-button.md-raised:not([disabled]):hover span {
+  color:white;
+}
+
+.md-button.md-raised:not([disabled]):hover a {
+  color:white;
+}
+md-button.md-raised:not([disabled]) .mondeHover {
+  display: none;
+}
+
+.mondeHover {
+  display: none;
+}
+a.md-button.buttonProject.md-raised:hover  .mondeHover {
+  display: inline;
+}
+.md-button.md-raised:not([disabled]):hover .mondeOk {
+  display: none;
+}
+.md-button.md-raised:not([disabled]):hover md-icon {
+  color:white;
+}
+.md-button:hover {
+  color: white;
+  background-color: grey;
+}
+
+.menuPartager .md-button:hover span {
+  color: white;
+}
+
+
+.menuPartager:hover{
+  color:red;
+}
+marker {
+  font-size: 1.5em;
+  padding: 10px;
+  background: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: #7F7F7F solid 1px;
+  position:absolute !important;
+}
+.radioGroup {
+  padding: 0;
+}
+#footer {
+  margin-top: 5px;
+  min-height: 42px;
+}
