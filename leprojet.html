@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr" >
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/angular-material.min.css">
+  <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/custom.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyBq90AoNN8Lz4Eqfi88ZcH6GPWIeu1sF1g&libraries=placeses,visualization,drawing,geometry,places&v=3.exp"></script>
+  <script src="wp-content/themes/ecocitoyen/js/moment.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-cookies.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-animate.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-aria.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-messages.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/ng-map.min.js"></script>
+  <!-- Angular Material Library -->
+  <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/ecocitylity.js"></script>
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content=
+  "{{og.url}}" />
+  <meta property="article:author" content="{{og.author}}" />
+  <meta property="article:publisher" content="{{og.author}}" />
+  <meta property="og:title" content="{{og.title}}" />
+  <meta property="og:description" content="{{og.description}}" />
+  <meta property="og:image" content="{{og.image}}" />
+  <meta name="twitter:site" content="{{twitter.site}}">
+  <meta name="twitter:title" content="{{twitter.title}}">
+  <meta name="twitter:description" content="{{twitter.description}}">
+  <meta name="twitter:creator" content="{{twitter.author}}">
+  <meta name="twitter:image" content="{{twitter.image}}">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <meta name="description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !" />
+
+</head>
+<body ng-app="BlankApp" ng-cloak     padding-left: 10px;>
+  <div ng-controller="ecocitoyenCtrl as vm"  layout="column"   style="height:100%;" ng-cloak>
+    <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <h1  class="visuallyhidden">Eco-map la carte collaborative gratuite des points éco-citoyens de France, par région, département et ville.</h1>
+      <img src="wp-content/themes/ecocitoyen/images/logo_eco.png" width="180"/>
+      <div style="margin-left:20px;margin-right:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+      <div hide-xs class="baseline"><p>La carte collaborative gratuite <strong>des points éco-citoyens de France !</strong></p></div>
+      <div style="margin-left:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+    </div>
+  </md-toolbar>
+
+<section layout="row" flex>
+<md-content flex layout-padding class="main">
+<div class="container_projet"></div>
+<img src="wp-content/themes/ecocitoyen/images/couv_map.png"/>
+</md-content>
+</section>
+
+
+
+  <md-toolbar id="footer" class="md-hue-2">
+  <div id="license-footer" flex="" class="ng-binding flex">
+    <p>Copyright 2016 - <a href="#" target="_blank" ng-click="openML();">Mentions</a> - <a href="leprojet.html" target="_blank" ng-click="openML();">Le projet</a> - <a href="https://www.facebook.com/ecomaporg/?fref=ts" target="_blank" ng-click="openML();">Facebook</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
+  </div>
+</md-toolbar>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-76518787-1', 'auto');ga('send', 'pageview');
+
+  </script>
+</body>
+</html>
