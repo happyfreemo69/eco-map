@@ -39,6 +39,14 @@
 
 </head>
 <body ng-app="BlankApp" ng-cloak     padding-left: 10px;>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
   <div ng-controller="ecocitoyenCtrl as vm"  layout="column"   style="height:100%;" ng-cloak>
     <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
@@ -50,101 +58,107 @@
     </div>
   </md-toolbar>
 
-<section layout="row" flex>
-<md-content flex layout-padding class="main">
-<div class="container_projet">
-  <img src="wp-content/themes/ecocitoyen/images/couv_map.png"/>
-  <h2>Une carte écologique et citoyenne</h2>
-<p>Eco‐map répertorie tous les points éco‐citoyens de France sur une seule carte. Les points sont répartis en fonction de 12 catégories :</p>
-  <ul>
-    <li>Poubelles de verre</li>
-    <li>Stations de location de voitures électriques</li>
-    <li>Stations de location de vélos</li>
-    <li>Déchèteries</li>
-    <li>Composts</li>
-    <li>Relais vêtements</li>
-    <li>Aires de co‐voiturage</li>
-    <li>Containers de tri sélectif</li>
-    <li>Bennes à cartons</li>
-    <li>Pedibus</li>
-    <li>Bornes de recharge pour voitures électriques</li>
-    <li>Divers</li>
-  </ul>
-    <h2>Une action de tous pour l’environnement</h2>
-  <p>Cette carte éco‐citoyenne se complète grâce à un système de CrowdData : se sont les
-  données remontées par tous les citoyens qui, unies, constituent une carte précise et fidèle !
-  Participer à l’agrémentation de cette Eco‐map est très simple : tous les citoyens peuvent
-  apporter leur pierre à l’édifice en téléchargeant l’application mobile CityLity sur Android ou
-  sur iOS.</p>
-  <p>Ensuite, où qu’ils soient, les utilisateurs peuvent signaler en 3 clics tous les points éco‐
-  citoyens qui les entourent ou qui se trouvent sur leur chemin. Automatiquement
-  géolocalisés, ils n’ont plus qu’à sélectionner la catégorie du point éco‐friendly, le prendre en
-  photo et ajouter des détails si besoin. Les points s’ajoutent au fur et à mesure sur Eco‐map
-  qui les répertorie tous en fonction de leur localisation géographique.</p>
-  
-  <p>Eco‐map offre plusieurs tris possibles pour que l’information soit claire et ludique :
-  <ul>
-    <li> L’utilisateur peut sélectionner la ou les catégories de points qu’il souhaite voir
-      afficher sur la carte</li>
-      <li> L’utilisateur peut également trier par chronologie : s’il déplace le curseur au fil des
-        mois, il voit apparaître l’évolution du nombre de points répertoriés.</li>
-      </ul></p>
-      <h2>Une impulsion en faveur de l’écologie et du développement durable pour les villes</h2>
-      <p>Construire une carte qualifiée de tous les points eco‐friendly de France permet de
-      sensibiliser les citoyens et d’encourager les villes à s’inscrire dans une démarche écologique.
-      De manière ludique, Eco‐map permet de comparer et de mettre en compétition les villes de
-      France. Cela permet d’inciter les citoyens à répertorier le plus de points écologiques pour
-      placer leur ville en tête, et de donner aux villes une motivation supplémentaire pour devenir
-      éco‐citoyennes.<br>
-      Cette carte permet également aux citoyens, qu’ils soient résidents ou simplement de
-      passage dans une ville, de retrouver l’information dont ils ont besoin : la poubelle de verre la
-      plus proche ? Une borne de recharge pour voiture électrique à proximité ? Tout est sur Eco‐
-      map !<br>
-      Cette accessibilité à l’information géolocalisée permet d’encourager le tri sélectif. Un
-      citoyen, plutôt que de choisir la solution de facilité non écologique, peut trouver très
-      rapidement les renseignements sur les poubelles de tris les plus proches et n’aura plus de
-      réticence ou de perte de temps à être un bon éco‐citoyen !
-      Cette carte est actuellement disponible sur la France, mais nous espérons pouvoir très
-      prochainement l’ouvrir à l’Europe puis à tous les pays du monde !</p>
-      <h2>Un projet pour l’écologie initié par CityLity</h2>
-      <p>Eco‐map est une carte créée par CityLity, une startup née en mai 2014 qui développe une
-      application mobile : CityLity. Cette application est conçue pour faciliter le quotidien des
-      citoyens, en les mettant en relation avec le gestionnaire du lieu dans lequel ils se trouvent :
-      en ville c’est la mairie, et dans leur immeuble il s’agit du gestionnaire (syndic ou bailleur).<p>
-      L’application est un moyen de communication et de diffusion de l’information :
+  <section layout="row" flex>
+    <md-content flex layout-padding class="main">
+    <div hide-sm  hide-xs class="facebook">
+    <a class="apple_btn" href="http://www.google.com">Apple</a>
+    <a class="android_btn" href="http://www.google.com">Android</a>
+      <div class="fb-page" data-href="https://www.facebook.com/ecomaporg/?fref=ts" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ecomaporg/?fref=ts" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ecomaporg/?fref=ts">Eco-Map</a></blockquote></div>
+    </div>
+    <div class="container_projet">
+      <img class="couv" src="wp-content/themes/ecocitoyen/images/couv_map.png"/>
+      <h2>Une carte écologique et citoyenne</h2>
+      <p>Eco‐map répertorie tous les points éco‐citoyens de France sur une seule carte. Les points sont répartis en fonction de 12 catégories :</p>
       <ul>
-        <li>Ascendante : l’utilisateur transmet de l’information au gestionnaire (déclaration
-          d’incidents, demande d’intervention, etc.)</li>
-          <li>Descendante : le gestionnaire et les acteurs urbains (commerce, associations)
-            publient de l’information pertinente à l’intention de l’utilisateur (notifications de
-            travaux, planning d’évènements, etc.)</li>
-            <li>Transversale : localisé dans son immeuble, l’utilisateur peut échanger avec ses voisins
-              (plateforme d’entraides, communication ciblée, etc)</li>
-            </ul>
-            <p>En janvier 2016, l’application mobile a pris un tournant écologique en ajoutant une nouvelle
-            fonctionnalité : « éco‐citoyen ». André May, co‐fondateur et président de CityLity, explique :
-            « Suite aux réflexions autour de la COP 21, nous avons voulu donner à CityLity une
-            dimension écologique à l’application et impliquer le citoyen dans cette démarche. À travers
-            cette fonctionnalité, nous souhaitons l’aider à devenir un éco‐citoyen exemplaire et nous lui
-            permettons de contribuer à l’aboutissement de cette première carte géographique éco‐
-            citoyenne ». En février 2016, déjà plus de 1000 points eco‐friendly avaient été répertoriés !</p>
-</div>
+        <li>Poubelles de verre</li>
+        <li>Stations de location de voitures électriques</li>
+        <li>Stations de location de vélos</li>
+        <li>Déchèteries</li>
+        <li>Composts</li>
+        <li>Relais vêtements</li>
+        <li>Aires de co‐voiturage</li>
+        <li>Containers de tri sélectif</li>
+        <li>Bennes à cartons</li>
+        <li>Pedibus</li>
+        <li>Bornes de recharge pour voitures électriques</li>
+        <li>Divers</li>
+      </ul>
+      <h2>Une action de tous pour l’environnement</h2>
+      <p>Cette carte éco‐citoyenne se complète grâce à un système de CrowdData : se sont les
+        données remontées par tous les citoyens qui, unies, constituent une carte précise et fidèle !
+        Participer à l’agrémentation de cette Eco‐map est très simple : tous les citoyens peuvent
+        apporter leur pierre à l’édifice en téléchargeant l’application mobile CityLity sur Android ou
+        sur iOS.</p>
+        <center><img src="wp-content/themes/ecocitoyen/images/iphone.png" width="450px"/></center>
+        <p>Ensuite, où qu’ils soient, les utilisateurs peuvent signaler en 3 clics tous les points éco‐
+          citoyens qui les entourent ou qui se trouvent sur leur chemin. Automatiquement
+          géolocalisés, ils n’ont plus qu’à sélectionner la catégorie du point éco‐friendly, le prendre en
+          photo et ajouter des détails si besoin. Les points s’ajoutent au fur et à mesure sur Eco‐map
+          qui les répertorie tous en fonction de leur localisation géographique.</p>
 
-</md-content>
-</section>
+          <p>Eco‐map offre plusieurs tris possibles pour que l’information soit claire et ludique :
+            <ul>
+              <li> L’utilisateur peut sélectionner la ou les catégories de points qu’il souhaite voir
+                afficher sur la carte</li>
+                <li> L’utilisateur peut également trier par chronologie : s’il déplace le curseur au fil des
+                  mois, il voit apparaître l’évolution du nombre de points répertoriés.</li>
+                </ul></p>
+                <h2>Une impulsion en faveur de l’écologie et du développement durable pour les villes</h2>
+                <p>Construire une carte qualifiée de tous les points eco‐friendly de France permet de
+                  sensibiliser les citoyens et d’encourager les villes à s’inscrire dans une démarche écologique.
+                  De manière ludique, Eco‐map permet de comparer et de mettre en compétition les villes de
+                  France. Cela permet d’inciter les citoyens à répertorier le plus de points écologiques pour
+                  placer leur ville en tête, et de donner aux villes une motivation supplémentaire pour devenir
+                  éco‐citoyennes.<br>
+                  Cette carte permet également aux citoyens, qu’ils soient résidents ou simplement de
+                  passage dans une ville, de retrouver l’information dont ils ont besoin : la poubelle de verre la
+                  plus proche ? Une borne de recharge pour voiture électrique à proximité ? Tout est sur Eco‐
+                  map !<br>
+                  Cette accessibilité à l’information géolocalisée permet d’encourager le tri sélectif. Un
+                  citoyen, plutôt que de choisir la solution de facilité non écologique, peut trouver très
+                  rapidement les renseignements sur les poubelles de tris les plus proches et n’aura plus de
+                  réticence ou de perte de temps à être un bon éco‐citoyen !
+                  Cette carte est actuellement disponible sur la France, mais nous espérons pouvoir très
+                  prochainement l’ouvrir à l’Europe puis à tous les pays du monde !</p>
+                  <h2>Un projet pour l’écologie initié par CityLity</h2>
+                  <p>Eco‐map est une carte créée par CityLity, une startup née en mai 2014 qui développe une
+                    application mobile : CityLity. Cette application est conçue pour faciliter le quotidien des
+                    citoyens, en les mettant en relation avec le gestionnaire du lieu dans lequel ils se trouvent :
+                    en ville c’est la mairie, et dans leur immeuble il s’agit du gestionnaire (syndic ou bailleur).<p>
+                    L’application est un moyen de communication et de diffusion de l’information :
+                    <ul>
+                      <li>Ascendante : l’utilisateur transmet de l’information au gestionnaire (déclaration
+                        d’incidents, demande d’intervention, etc.)</li>
+                        <li>Descendante : le gestionnaire et les acteurs urbains (commerce, associations)
+                          publient de l’information pertinente à l’intention de l’utilisateur (notifications de
+                          travaux, planning d’évènements, etc.)</li>
+                          <li>Transversale : localisé dans son immeuble, l’utilisateur peut échanger avec ses voisins
+                            (plateforme d’entraides, communication ciblée, etc)</li>
+                          </ul>
+                          <p>En janvier 2016, l’application mobile a pris un tournant écologique en ajoutant une nouvelle
+                            fonctionnalité : « éco‐citoyen ». André May, co‐fondateur et président de CityLity, explique :
+                            « Suite aux réflexions autour de la COP 21, nous avons voulu donner à CityLity une
+                            dimension écologique à l’application et impliquer le citoyen dans cette démarche. À travers
+                            cette fonctionnalité, nous souhaitons l’aider à devenir un éco‐citoyen exemplaire et nous lui
+                            permettons de contribuer à l’aboutissement de cette première carte géographique éco‐
+                            citoyenne ». En février 2016, déjà plus de 1000 points eco‐friendly avaient été répertoriés !</p>
+                          </div>
+
+                        </md-content>
+                      </section>
 
 
 
-  <md-toolbar id="footer" class="md-hue-2">
-  <div id="license-footer" flex="" class="ng-binding flex">
-    <p>Copyright 2016 - <a href="#" target="_blank" ng-click="openML();">Mentions</a> - <a href="leprojet.html" target="_blank" ng-click="openML();">Le projet</a> - <a href="https://www.facebook.com/ecomaporg/?fref=ts" target="_blank" ng-click="openML();">Facebook</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
-  </div>
-</md-toolbar>
-<script>
+                      <md-toolbar id="footer" class="md-hue-2">
+                      <div id="license-footer" flex="" class="ng-binding flex">
+                        <p>Copyright 2016 - <a href="#" target="_blank" ng-click="openML();">Mentions</a> - <a href="leprojet.html" target="_blank" ng-click="openML();">Le projet</a> - <a href="https://www.facebook.com/ecomaporg/?fref=ts" target="_blank" ng-click="openML();">Facebook</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
+                      </div>
+                    </md-toolbar>
+                    <script>
 
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-76518787-1', 'auto');ga('send', 'pageview');
+                      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-76518787-1', 'auto');ga('send', 'pageview');
 
-  </script>
-</body>
-</html>
+                      </script>
+                    </body>
+                    </html>
