@@ -695,7 +695,10 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 
             }
             $scope.relouLink = function(){
-                alert("toto");
+                window.location.href="http://eco-map.org/leprojet.html";
+            }
+            $scope.revertRelouLink = function(){
+                window.location.href="http://eco-map.org";
             }
             $scope.isBottom = function() {
 
