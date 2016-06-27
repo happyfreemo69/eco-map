@@ -1,6 +1,7 @@
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 var app = angular.module('BlankApp', ['ngMaterial', 'ngMessages', 'ngMap', 'ngCookies', 'angularConsent']);
 app.config(function($locationProvider) {
     $locationProvider.html5Mode({
@@ -692,6 +693,9 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                     return false;
                 }
 
+            }
+            $scope.relouLink = function(){
+                alert("toto");
             }
             $scope.isBottom = function() {
 
