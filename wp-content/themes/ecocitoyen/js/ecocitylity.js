@@ -1,6 +1,9 @@
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+function revertRelouLink(){
+    window.location.href="http://eco-map.org";
+}
 
 var app = angular.module('BlankApp', ['ngMaterial', 'ngMessages', 'ngMap', 'ngCookies', 'angularConsent']);
 app.config(function($locationProvider) {
