@@ -19,6 +19,9 @@ md-toolbar.md-hue-2:not(.md-menu-toolbar) {
 md-input-container .md-input{
 	border-color:white;
 }
+md-input-container:not(.md-input-invalid).md-input-focused .md-input{
+	border-color:white!important;
+}
 md-toolbar.md-hue-2:not(.md-menu-toolbar){
 	border-color: white;
 }
