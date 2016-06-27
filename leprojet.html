@@ -18,24 +18,26 @@
   <script src="wp-content/themes/ecocitoyen/js/angular-messages.min.js"></script>
   <script src="wp-content/themes/ecocitoyen/js/ng-map.min.js"></script>
   <!-- Angular Material Library -->
-  <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
-  <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
-  <script src="wp-content/themes/ecocitoyen/js/ecocitylity.js"></script>
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content=
-  "{{og.url}}" />
-  <meta property="article:author" content="{{og.author}}" />
-  <meta property="article:publisher" content="{{og.author}}" />
-  <meta property="og:title" content="{{og.title}}" />
-  <meta property="og:description" content="{{og.description}}" />
-  <meta property="og:image" content="{{og.image}}" />
-  <meta name="twitter:site" content="{{twitter.site}}">
-  <meta name="twitter:title" content="{{twitter.title}}">
-  <meta name="twitter:description" content="{{twitter.description}}">
-  <meta name="twitter:creator" content="{{twitter.author}}">
-  <meta name="twitter:image" content="{{twitter.image}}">
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
-  <meta name="description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !" />
+ <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
+ <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
+ <script src="wp-content/themes/ecocitoyen/js/ecocitylity.js"></script>
+ <meta property="og:type" content="article" />
+ <meta property="og:url" content=
+ "http://eco-map.org/" />
+ <meta property="article:author" content="https://www.facebook.com/ecomaporg/" />
+ <meta property="article:publisher" content="https://www.facebook.com/ecomaporg/" />
+ <meta property="og:title" content="La carte collaborative des points éco-citoyens de France !" />
+ <meta property="og:description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !" />
+ <meta property="og:image" content="wp-content/themes/ecocitoyen/images/ogfacebook.png" />
+ <meta name="twitter:card" content="summary" />
+ <meta name="twitter:site" content="@citylityapp">
+ <meta name="twitter:title" content="La carte collaborative des points éco-citoyens de France !">
+ <meta name="twitter:description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !">
+ <meta name="twitter:creator" content="@citylityapp">
+ <meta name="twitter:image" content="wp-content/themes/ecocitoyen/images/ogtwitter.png">
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+ <title>Découvrez la première carte des points écologiques français.</title>
+ <meta name="description" content="Eco-map est un projet citoyen qui permet de répertorier sur une même carte les points écologiques renseignés par les utilisateurs." />
 
 </head>
 <body ng-app="BlankApp" ng-cloak     padding-left: 10px;>
@@ -50,19 +52,22 @@
   <div ng-controller="ecocitoyenCtrl as vm"  layout="column"   style="height:100%;" ng-cloak>
     <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
-      <h1  class="visuallyhidden">Eco-map, un projet d'écologie pour impliquer les citoyens dans leur environnement</h1>
+    <div hide-xs hide-sm class="backmap"><a href="http://eco-map.org"><img src="wp-content/themes/ecocitoyen/images/icons/arrows.svg" width="10"/> Retour à la map</a></div>
+    <div hide-xs hide-sm style="margin-right:20px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
       <img src="wp-content/themes/ecocitoyen/images/logo_eco.png" width="180"/>
-      <div style="margin-left:20px;margin-right:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
-      <div hide-xs class="baseline"><p>Eco-map, un projet d'écologie pour impliquer les citoyens dans leur environnement.</p></div>
-      <div style="margin-left:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+      <div style="margin-left:20px;margin-right:20px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+      <div hide-xs ><h1 style="font-weight: normal;font-size: 14px;color: #87949c;">La carte collaborative <strong>des points éco-citoyens de France !</strong></h1></div>
+      <div hide-xs hide-sm style="margin-left:20px; margin-right:40px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+      <div hide-xs><a href='https://play.google.com/store/apps/details?id=fr.citylity.citylity&referrer=utm_source%3DEco-Map'><img alt='Disponible sur Google Play' width="150px" src='https://play.google.com/intl/en_us/badges/images/generic/fr_badge_web_generic.png'/></a></div>
+      <div hide-xs><a href='https://itunes.apple.com/app/apple-store/id976375724?pt=117122322&ct=Eco-Map&mt=8'><img alt='Disponible sur PlayStore' width="130px" src='wp-content/themes/ecocitoyen/images/apple.svg'/></a></div>
+
+                            
     </div>
   </md-toolbar>
 
   <section layout="row" flex>
     <md-content flex layout-padding class="main">
     <div hide-sm  hide-xs class="facebook">
-    <a class="apple_btn" href="http://www.google.com">Apple</a>
-    <a class="android_btn" href="http://www.google.com">Android</a>
       <div class="fb-page" data-href="https://www.facebook.com/ecomaporg/?fref=ts" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ecomaporg/?fref=ts" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ecomaporg/?fref=ts">Eco-Map</a></blockquote></div>
     </div>
     <div class="container_projet">
@@ -89,7 +94,7 @@
         Participer à l’agrémentation de cette Eco‐map est très simple : tous les citoyens peuvent
         apporter leur pierre à l’édifice en téléchargeant l’application mobile CityLity sur Android ou
         sur iOS.</p>
-        <center><img src="wp-content/themes/ecocitoyen/images/iphone.png" width="450px"/></center>
+        <center><img class="iphone" src="wp-content/themes/ecocitoyen/images/iphone.png"/></center>
         <p>Ensuite, où qu’ils soient, les utilisateurs peuvent signaler en 3 clics tous les points éco‐
           citoyens qui les entourent ou qui se trouvent sur leur chemin. Automatiquement
           géolocalisés, ils n’ont plus qu’à sélectionner la catégorie du point éco‐friendly, le prendre en
@@ -143,7 +148,6 @@
                             permettons de contribuer à l’aboutissement de cette première carte géographique éco‐
                             citoyenne ». En février 2016, déjà plus de 1000 points eco‐friendly avaient été répertoriés !</p>
                           </div>
-
                         </md-content>
                       </section>
 
@@ -151,7 +155,7 @@
 
                       <md-toolbar id="footer" class="md-hue-2">
                       <div id="license-footer" flex="" class="ng-binding flex">
-                        <p>Copyright 2016 - <a href="#" target="_blank" ng-click="openML();">Mentions</a> - <a href="leprojet.html" target="_blank" ng-click="openML();">Le projet</a> - <a href="https://www.facebook.com/ecomaporg/?fref=ts" target="_blank" ng-click="openML();">Facebook</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
+                        <p>Copyright 2016 - <a href="#" target="_blank" ng-click="openML();">Mentions</a> - <a href="http://eco-map.org/leprojet.html" target="_blank" ng-click="openML();">Le projet</a> - <a href="https://www.facebook.com/ecomaporg/?fref=ts" target="_blank" ng-click="openML();">Facebook</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
                       </div>
                     </md-toolbar>
                     <script>

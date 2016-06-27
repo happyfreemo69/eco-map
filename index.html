@@ -1,81 +1,79 @@
 <!DOCTYPE html>
 
 <html lang="fr" >
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Angular Material style sheet -->
-        <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/angular-material.min.css">
-        <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/custom.css">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-        <!-- Angular Material requires Angular.js Libraries -->
-        <script src="http://maps.google.com/maps/api/js?key=AIzaSyBq90AoNN8Lz4Eqfi88ZcH6GPWIeu1sF1g&libraries=placeses,visualization,drawing,geometry,places&v=3.exp"></script>
-        <script src="wp-content/themes/ecocitoyen/js/moment.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/angular.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/angular-cookies.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/angular-animate.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/angular-aria.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/angular-messages.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/ng-map.min.js"></script>
-        <!-- Angular Material Library -->
-        <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
-        <script src="wp-content/themes/ecocitoyen/js/ecocitylity.js"></script>
-        <meta property="og:type" content="article" />
-<meta property="og:url" content=
-"{{og.url}}" />
-<meta property="article:author" content="{{og.author}}" />
-<meta property="article:publisher" content="{{og.author}}" />
-<meta property="og:title" content="{{og.title}}" />
-<meta property="og:description" content="{{og.description}}" />
-<meta property="og:image" content="{{og.image}}" />
-<meta name="twitter:site" content="{{twitter.site}}">
-<meta name="twitter:title" content="{{twitter.title}}">
-<meta name="twitter:description" content="{{twitter.description}}">
-<meta name="twitter:creator" content="{{twitter.author}}">
-<meta name="twitter:image" content="{{twitter.image}}">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/angular-material.min.css">
+  <link rel="stylesheet" href="wp-content/themes/ecocitoyen/css/custom.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyBq90AoNN8Lz4Eqfi88ZcH6GPWIeu1sF1g&libraries=placeses,visualization,drawing,geometry,places&v=3.exp"></script>
+  <script src="wp-content/themes/ecocitoyen/js/moment.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-cookies.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-animate.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-aria.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/angular-messages.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/ng-map.min.js"></script>
+  <!-- Angular Material Library -->
+ <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
+ <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
+ <script src="wp-content/themes/ecocitoyen/js/ecocitylity.js"></script>
+ <meta property="og:type" content="article" />
+ <meta property="og:url" content=
+ "http://eco-map.org/" />
+ <meta property="article:author" content="https://www.facebook.com/ecomaporg/" />
+ <meta property="article:publisher" content="https://www.facebook.com/ecomaporg/" />
+ <meta property="og:title" content="La carte collaborative des points éco-citoyens de France !" />
+ <meta property="og:description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !" />
+ <meta property="og:image" content="wp-content/themes/ecocitoyen/images/ogfacebook.png" />
+ <meta name="twitter:card" content="summary" />
+ <meta name="twitter:site" content="@citylityapp">
+ <meta name="twitter:title" content="La carte collaborative des points éco-citoyens de France !">
+ <meta name="twitter:description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !">
+ <meta name="twitter:creator" content="@citylityapp">
+ <meta name="twitter:image" content="wp-content/themes/ecocitoyen/images/ogtwitter.png">
  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
-<meta name="description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !" />
+ <title>La carte collaborative des points éco-citoyens de France !</title>
+ <meta name="description" content="Retrouvez tous les points eco-friendly de France sur une carte unique et collaborative ! Comparez, et découvrez quelle ville est la plus engagée pour l’environnement !" /
 
-    </head>
-    <body ng-app="BlankApp" ng-cloak     padding-left: 10px;>
-   <div id="fb-root"></div>
-<script>(function(d, s, id) {
+</head>
+<body ng-app="BlankApp" ng-cloak     padding-left: 10px;>
+ <div id="fb-root"></div>
+ <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-        <div ng-controller="ecocitoyenCtrl as vm"  layout="column"   style="height:100%;" ng-cloak>
-             <section consent="cookie-disclaimer">
+<div ng-controller="ecocitoyenCtrl as vm"  layout="column"   style="height:100%;" ng-cloak>
+ <section consent="cookie-disclaimer">
   <section ng-if="$consent.hasNotAgreedYet()">
-    <p>En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies pour réaliser des statistiques de
-
-visites. Pour en savoir plus sur les cookies</p>
-    <button ng-click="$consent.agree();">Ok, j'ai compris</button>
+    <p>En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies pour réaliser des statistiques de visites.</p>
+      <button ng-click="$consent.agree();">J'accèpte</button>
+    </section>
   </section>
-</section>
-            <md-toolbar class="md-hue-2">
-            <div class="md-toolbar-tools">
+  <md-toolbar class="md-hue-2">
+  <div class="md-toolbar-tools">
+    <img src="wp-content/themes/ecocitoyen/images/logo_eco.png" width="130"/>
+    <div style="margin-left:20px;margin-right:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+    <div hide-xs ><h1 style="font-weight: normal;font-size: 14px;color: #87949c;">La carte collaborative <strong>des points éco-citoyens de France !</strong></h1></div>
+    <div style="margin-left:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+    <md-input-container class="md-block searchCity " flex-gt-sm hide-xs>
+    <md-icon class="iconSearch" md-svg-src="wp-content/themes/ecocitoyen/images/icons/searchIcon.svg" md-menu-align-target></md-icon>
 
-                <h1  class="visuallyhidden">Eco-map la carte collaborative des points éco-citoyens de France, par région, département et ville.</h1>
-                <img src="wp-content/themes/ecocitoyen/images/logo_eco.png" width="130"/>
-                <div style="margin-left:20px;margin-right:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
-                <div hide-xs class="baseline"><p>La carte collaborative <strong>des points éco-citoyens de France !</strong></p></div>
-                <div style="margin-left:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
-                 <md-input-container class="md-block searchCity " flex-gt-sm hide-xs>
-                <md-icon class="iconSearch" md-svg-src="wp-content/themes/ecocitoyen/images/icons/searchIcon.svg" md-menu-align-target></md-icon>
-
-                <input type="text" places-auto-complete size=80
-                ng-model="vm.address"
-                component-restrictions="{country:'fr'}"
-                types="{{types}}"
-                aria-label = "recherche"
-                on-place-changed="vm.placeChanged()" />
-                </md-input-container>
-                <div style="height: 100%;width:1px;background-color: #d8d8d8;"></div>
+    <input type="text" places-auto-complete size=80
+    ng-model="vm.address"
+    component-restrictions="{country:'fr'}"
+    types="{{types}}"
+    aria-label = "recherche"
+    on-place-changed="vm.placeChanged()" />
+  </md-input-container>
+  <div style="height: 100%;width:1px;background-color: #d8d8d8;"></div>
 <!--<div  hide-sm  hide-xs class="menu-demo-container" layout-align="center center" layout="column">
 
                  <md-menu class="menuPartager" >
@@ -104,138 +102,108 @@ visites. Pour en savoir plus sur les cookies</p>
 
       </md-menu-content>
     </md-menu>
-</div>-->
- <div style="margin-right:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
-<div hide-sm  hide-xs    class="containerButtonProject">
-  <md-button  ng-href="{{getLinkProjet()}}" class="md-raised buttonProject" aria-label="Open phone interactions menu" class=""  >
-  <!--  <a style="width:100%,height:100%" ng-if="isTop()" href="#editoLeProjet"-->
-  <div ng-if="isTop()">
-    Le projet >>
-  </div>
-      <!-- </a> -->
+  </div>-->
+  <div style="margin-right:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
+  <div hide-sm  hide-xs    class="containerButtonProject">
+    <md-button  ng-href="{{getLinkProjet()}}" class="md-raised buttonProject" aria-label="Open phone interactions menu" class=""  >
+    <!--  <a style="width:100%,height:100%" ng-if="isTop()" href="#editoLeProjet"-->
+    <div ng-if="isTop()">
+      Le projet >>
+    </div>
+    <!-- </a> -->
 
     <!--  <a style="width:100%,height:100%"  ng-if="isBottom()" > -->
-      <div ng-if="isBottom()">
-        
+    <div ng-if="isBottom()">
+
       La carte
-      </div>
+    </div>
     <!--</a> -->
-      </md-button>
-       </div>
-   <div hide-gt-sm >
-    <p><md-button class="md-raised " aria-label="Open menu" class=""   ng-click="openRightMenu()">
-       Voir le menu
-      </md-button></p>
+  </md-button>
+</div>
+<div hide-gt-sm >
+  <p><md-button class="md-raised " aria-label="Open menu" class=""   ng-click="openRightMenu()">
+   Voir le menu
+ </md-button></p>
 
-   </div>
+</div>
 
-            </div>
-            </md-toolbar>
-            <section layout="row" flex>
+</div>
+</md-toolbar>
+<section layout="row" flex>
 
 
-                <md-content flex layout-padding class="main">
-                <div style="text-align: center;top: 56px;"  ng-hide="timeoutLoad" ng-show="loading[0] || loading[1]">
-                    On vous charge la map...
-                    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
-                </div>
-                <div style="text-align: center;top: 56px;" ng-show="timeoutLoad" >
-                    Une erreur est survenue lors du chargement des données. N'hésitez pas à vous rapprocher de nous afin de nous le remonter.
-                    Veuillez nous excuser pour la gêne occassionnée.
-                </div>
-                <p style="padding:0;    display: inline;" id="laCarte"></p>
-                <ng-map style="max-height:850px;" default-style="false" zoom="10" center="{{center}}" lazy-init="true" >
+  <md-content flex layout-padding class="main">
+  <div style="text-align: center;top: 56px;"  ng-hide="timeoutLoad" ng-show="loading[0] || loading[1]">
+    On vous charge la map...
+    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+  </div>
+  <div style="text-align: center;top: 56px;" ng-show="timeoutLoad" >
+    Une erreur est survenue lors du chargement des données. N'hésitez pas à vous rapprocher de nous afin de nous le remonter.
+    Veuillez nous excuser pour la gêne occassionnée.
+  </div>
+  <p style="padding:0;    display: inline;" id="laCarte"></p>
+  <ng-map style="max-height:850px;" default-style="false" zoom="10" center="{{center}}" lazy-init="true" >
 
-                <heatmap-layer   ng-hide="true" ng-show="poiVisible" id="poi" data="heatmapMarqueurs" ></heatmap-layer>
+  <heatmap-layer   ng-hide="true" ng-show="poiVisible" id="poi" data="heatmapMarqueurs" ></heatmap-layer>
 
-                <marker ng-hide="false" icon="{{point.icon}}"   ng-repeat="point in points  |  filterMultiple:{cate:filtreArray || '!!'} | filter: dateRangeFilter('date', startDate, endDate) | filter:sizeCheck() track by point.id " position="{{point.geoloc.lat}},{{point.geoloc.lng}}"  title="{{point.cate}}"></marker>
-                </ng-map>
-             
+  <marker ng-hide="false" icon="{{point.icon}}"   ng-repeat="point in points  |  filterMultiple:{cate:filtreArray || '!!'} | filter: dateRangeFilter('date', startDate, endDate) | filter:sizeCheck() track by point.id " position="{{point.geoloc.lat}},{{point.geoloc.lng}}"  title="{{point.cate}}"></marker>
+</ng-map>
+
               <!--  <div layout="row" flex="noshrink" layout-align="center center" class="layout-align-center-center layout-row flex-noshrink">
 
-      </div>-->
+            </div>-->
 
 
-                </md-content>
-                <md-sidenav  md-is-locked-open="$mdMedia('gt-sm')" class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+          </md-content>
+          <md-sidenav  md-is-locked-open="$mdMedia('gt-sm')" class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
 
- <div hide-gt-sm >
-
-
-                 <md-menu style="" class="menuPartager" >
-      <md-button class="md-raised" aria-label="Open phone interactions menu" class="" ng-hover="vm.openMenu($mdOpenMenu, $event)">
-        <md-icon md-menu-origin md-svg-src="wp-content/themes/ecocitoyen/images/icons/share.svg"></md-icon> Partager
-      </md-button>
-      <md-menu-content width="4" class="menuContent">
-        <md-menu-item>
-          <md-button ng-click="shareFb()">
-            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/facebook.svg" md-menu-align-target></md-icon>
-            Facebook
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button  ng-click="shareTwitter()">
-            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/twitter.svg"></md-icon>
-            Twitter
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button  ng-click="shareUrl()">
-            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/url.svg"></md-icon>
-            URL
-          </md-button>
-        </md-menu-item>
-
-      </md-menu-content>
-    </md-menu>
-
+          <div hide-gt-sm >
 <div class="containerButtonProject">
+  <center><md-button class="md-raised buttonProject" aria-label="Open phone interactions menu" href="#editoLeProjet" class="" >Voir le projet >>
+</md-button></center>
+<hr>
+</div>
 
-  <md-button class="md-raised buttonProject" aria-label="Open phone interactions menu" href="#editoLeProjet" class="" >
-      <img src="wp-content/themes/ecocitoyen/images/icons/monde.png" /> Le projet
-      </md-button>
-       </div>
+</div>
+<md-content layout-padding>
 
-   </div>
-                <md-content layout-padding>
+<div class="sliderRight">
+  <p class="dateSliderDebut"> Janv. 2016 </p>
+  <p class="dateSliderFin"> Aujourd'hui </p></div>
+  <div class="divSliderContainer">
 
-                <div class="sliderRight">
-                  <p class="dateSliderDebut"> Janv. 2016 </p>
-                    <p class="dateSliderFin"> Aujourd'hui </p></div>
-                <div class="divSliderContainer">
+    <md-slider-container>
+    <md-slider flex min="0" max="{{dates.length-1}}"  ng-model="dateSlider"  aria-label="red" id="red-slider"></md-slider>
+  </md-slider-container>
+</div>
+<md-divider ></md-divider>
+<div ng-hide="mapSelector == 'poiHeatmap'">
+  <div class="selectAllZone">
+    <md-checkbox   ng-model="checkboxCate" ng-click="selectAll();"
+    aria-label="Checkbox 1">
+    Sélectionner tout
+  </md-checkbox>
+</div>
+<div class="cateArea">
+  <div class="divButton" ng-repeat="cate in cates track by $index  " >
+    <md-button class="md-fab button-{{iconCate[cate]}}" aria-label="{{cate}}"   ng-class="cateStyle[$index]" ng-click="add(cate, $index)">
+    <img class="png-icon" src="wp-content/themes/ecocitoyen/images/icons/{{iconCate[cate]}}.png" style="">
+  </md-button>
 
-                    <md-slider-container>
-                    <md-slider flex min="0" max="{{dates.length-1}}"  ng-model="dateSlider"  aria-label="red" id="red-slider"></md-slider>
-                    </md-slider-container>
-                </div>
-                <md-divider ></md-divider>
-                  <div ng-hide="mapSelector == 'poiHeatmap'">
-                <div class="selectAllZone">
-                <md-checkbox   ng-model="checkboxCate" ng-click="selectAll();"
-                 aria-label="Checkbox 1">
-                Sélectionner tout
-                </md-checkbox>
-            </div>
-            <div class="cateArea">
-                <div class="divButton" ng-repeat="cate in cates track by $index  " >
-<md-button class="md-fab button-{{iconCate[cate]}}" aria-label="{{cate}}"   ng-class="cateStyle[$index]" ng-click="add(cate, $index)">
-<img class="png-icon" src="wp-content/themes/ecocitoyen/images/icons/{{iconCate[cate]}}.png" style="">
-                 </md-button>
+  <h2 class="labelCate">{{cate}}</h2>
+  <h3 class="visuallyhidden">{{cateH3[$index]}}</h3>
+</div>
+</div>
+</div>
+<md-radio-group ng-model="mapSelector" ng-change="change()" class="radioGroup">
+<md-list ng-cloak class="showHideList">
 
-                 <h2 class="labelCate">{{cate}}</h2>
-                 <h3 class="visuallyhidden">{{cateH3[$index]}}</h3>
-                </div>
-            </div>
-          </div>
-           <md-radio-group ng-model="mapSelector" ng-change="change()" class="radioGroup">
-                <md-list ng-cloak class="showHideList">
+<md-list-item>
 
- <md-list-item>
+<p> Points éco-citoyens </p><md-radio-button value="poi" class="md-primary"></md-radio-button>
 
-  <p> Points éco-citoyens </p><md-radio-button value="poi" class="md-primary"></md-radio-button>
-
-  </md-list-item>
-  <!-- <md-subheader class="md-no-sticky"> Cartes de chaleur</md-subheader>-->
+</md-list-item>
+<!-- <md-subheader class="md-no-sticky"> Cartes de chaleur</md-subheader>-->
  <!--<md-list-item>
  <md-checkbox class="md-secondary" ng-true-value="true"
                 ng-false-value="false" ng-click="controlHeatmapPoi()" ng-model="heatmapPoiVisible"></md-checkbox>
@@ -244,11 +212,11 @@ visites. Pour en savoir plus sur les cookies</p>
   </md-list-item> -->
   <md-list-item>
  <!-- <md-checkbox class="md-secondary" ng-true-value="true"
-                ng-false-value="false" ng-click="controlHeatmapPoi()" ng-checked="heatmapPoiVisible"></md-checkbox>-->
+ ng-false-value="false" ng-click="controlHeatmapPoi()" ng-checked="heatmapPoiVisible"></md-checkbox>-->
 
-   <p> Carte de densité </p> <md-radio-button value="poiHeatmap" class="md-primary"> </md-radio-button>
+ <p> Carte de densité </p> <md-radio-button value="poiHeatmap" class="md-primary"> </md-radio-button>
 
-  </md-list-item>
+</md-list-item>
   <!--<md-list-item>
   <md-checkbox class="md-secondary" ng-true-value="true"
                 ng-false-value="false" ng-click="controlHeatmapDensite()" ng-model="heatmapDensiteVisible"></md-checkbox>
@@ -258,35 +226,35 @@ visites. Pour en savoir plus sur les cookies</p>
 </md-list>
 {{init()}}
 <div ng-show="showDebug">
-                <md-checkbox ng-true-value="true"
-                ng-false-value="false" ng-model="heatmap" aria-label="Checkbox 1">
-                Heatmap densité de population
-                </md-checkbox>
-                <md-checkbox   ng-true-value="true"
-                ng-false-value="false" aria-label="Checkbox 1">
-                Marqueurs
-                </md-checkbox>
-                <md-button ng-click="infoHeatmap()" >Click</md-button>
-                <md-button ng-click="disableMap()" >disableHeatmap</md-button>
-                <md-button ng-click="ableMap()" >ableHeatmap</md-button>
-                <md-button ng-click="radiusMoins()" >radius -</md-button>
-                <md-button ng-click="radiusPlus()" >radius +</md-button>
-                  <md-button ng-click="info()" >info +</md-button>
-            </div>
-                </md-content>
-                </md-sidenav>
+  <md-checkbox ng-true-value="true"
+  ng-false-value="false" ng-model="heatmap" aria-label="Checkbox 1">
+  Heatmap densité de population
+</md-checkbox>
+<md-checkbox   ng-true-value="true"
+ng-false-value="false" aria-label="Checkbox 1">
+Marqueurs
+</md-checkbox>
+<md-button ng-click="infoHeatmap()" >Click</md-button>
+<md-button ng-click="disableMap()" >disableHeatmap</md-button>
+<md-button ng-click="ableMap()" >ableHeatmap</md-button>
+<md-button ng-click="radiusMoins()" >radius -</md-button>
+<md-button ng-click="radiusPlus()" >radius +</md-button>
+<md-button ng-click="info()" >info +</md-button>
+</div>
+</md-content>
+</md-sidenav>
 
-              </section>
-            <md-toolbar id="footer" class="md-hue-2">
-              <div id="license-footer" flex="" class="ng-binding flex">
-                      <p>Copyright 2016 - <a href="#" target="_blank" ng-click="openML();">Mentions</a> - <a href="leprojet.html" target="_blank" ng-click="openML();">Le projet</a> - <a href="https://www.facebook.com/ecomaporg/?fref=ts" target="_blank" ng-click="openML();">Facebook</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
-              </div>
-            </md-toolbar>
-             <script>
+</section>
+<md-toolbar id="footer" class="md-hue-2">
+<div id="license-footer" flex="" class="ng-binding flex">
+  <p>Copyright 2016 - <a href="#" target="_blank" ng-click="openML();">Mentions</a> - <a href="http://eco-map.org/leprojet.html" target="_blank" ng-click="openML();">Le projet</a> - <a href="https://www.facebook.com/ecomaporg/?fref=ts" target="_blank" ng-click="openML();">Facebook</a> - <a title="Citylity l’application au service de l’éco-citoyenneté en France" href="http://www.citylity.com/" target="_blank">CityLity</a></p>
+</div>
+</md-toolbar>
+<script>
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-76518787-1', 'auto');ga('send', 'pageview');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-76518787-1', 'auto');ga('send', 'pageview');
 
-</script>
-            </body>
-            </html>
+  </script>
+</body>
+</html>

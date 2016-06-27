@@ -695,7 +695,7 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             }
             $scope.isBottom = function() {
 
-                if (location.hash == "www.google.fr") {
+                if (location.hash == "http://eco-map.org/leprojet.html") {
                     return true;
                 } else {
                     return false;
@@ -776,7 +776,7 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                     return "#laCarte";
 
                 } else {
-                    return "http://www.google.fr";
+                    return "http://eco-map.org/leprojet.html";
 
                 }
 

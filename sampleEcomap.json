@@ -1,0 +1,26 @@
+{
+    "points":[
+        {
+         "title": "pims for a ride",
+         "geoloc": {
+          "lat": 45.780483265532325,
+          "lng": 4.807598143815994
+         },
+         "date": "16/06/24",
+         "cate": "Co-Voiturage",
+         "files": [
+            "https://asset-dev.citylity.com/abeef820-39f3-11e6-b000-c9aa9485908e"
+         ],
+         "user_firstname":"bob",
+         "user_lastname":"moran",
+         "description":"pims everywhere",
+         "createdAt":1466762609020
+        }
+    ],
+    "cate":
+        ["Benne Carton","Poubelle Verre","Relais","Vélo","Tri Sélectif","Boite postale","Toilettes","Divers","Compost","Voiture élec.","Borne élec.","Déchèterie","Co-Voiturage","Pedibus"],
+    "cateOrdre":
+        [{"cate":"Benne Carton","ordre":8},{"cate":"Poubelle Verre","ordre":0},{"cate":"Relais","ordre":5},{"cate":"Vélo","ordre":2},{"cate":"Tri Sélectif","ordre":7},{"cate":"Boite postale","ordre":false},{"cate":"Toilettes","ordre":false},{"cate":"Divers","ordre":11},{"cate":"Compost","ordre":4},{"cate":"Voiture élec.","ordre":1},{"cate":"Borne élec.","ordre":10},{"cate":"Déchèterie","ordre":3},{"cate":"Co-Voiturage","ordre":6},{"cate":"Pedibus","ordre":9}],
+    "date":
+        [ "16/01/11", "16/01/12", "16/01/13" ]
+}
