@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.eco-map\.org [NC]
+RewriteRule ^(.*)$ http://eco-map.org/$1 [L,R=301]
