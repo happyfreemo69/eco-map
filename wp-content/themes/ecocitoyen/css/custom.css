@@ -332,13 +332,13 @@ button.md-fab.unchecked {
 			position: relative;
 		}
 		section[consent="cookie-disclaimer"] {
-			background-color: rgba(45, 45, 45);
+			background-color: rgba(45, 45, 45, 1);
 			position: fixed;
-			/* top: 0; */
+			top: 0;
 			z-index: 30000000;
 			width: 100%;
 			text-align: center;
-			margin-bottom: 10px
+			margin-bottom: 10px;
 			color:white;
 		}
 
