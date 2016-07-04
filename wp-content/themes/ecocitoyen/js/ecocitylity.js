@@ -378,7 +378,9 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                     if(!x.visible){
                         x.setMap(null);
                     }else{
-                        x.setMap(vm.map);
+                        if(!x.map){
+                            x.setMap(vm.map);
+                        }
                     }
                 })
             }
@@ -407,12 +409,23 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 
             }
             var lastUpdate = Date.now();
+            var lastTimeout = null;
             $scope.$watch('dateSlider', function(newValue){
-                if(Date.now() - lastUpdate > 100){//100ms
+                if(Date.now() - lastUpdate > 200){//100ms
                     $scope.endDate = moment(($scope.dates[newValue]), "YY/MM/DD");
                     $scope.preRendering();
                     $scope.loopResize();
                     lastUpdate = Date.now();
+                }else{
+                    if(lastTimeout){
+                        clearTimeout(lastTimeout);
+                        setTimeout(function(){
+                            $scope.endDate = moment(($scope.dates[newValue]), "YY/MM/DD");
+                            $scope.preRendering();
+                            $scope.loopResize();
+                            lastUpdate = Date.now();      
+                        }, 200);
+                    }
                 }
             });
 
