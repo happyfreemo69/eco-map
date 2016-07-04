@@ -12,56 +12,6 @@ app.config(function($locationProvider) {
         requireBase: false
     });
 })
-app.filter('filterMultiple', ['$filter', function($filter) {
-    return function(items, keyObj) {
-        var filterObj = {
-            data: items,
-            filteredData: [],
-            applyFilter: function(obj, key) {
-                var fData = [];
-                fData.push('');
-
-                if (this.filteredData.length == 0) {
-                    this.filteredData = this.data;
-
-                }
-
-                if (obj) {
-                    var fObj = {};
-                    if (angular.isString(obj)) {
-                        fObj[key] = obj;
-                        fData = fData.concat($filter('filter')(this.filteredData, fObj));
-                    } else if (angular.isArray(obj)) {
-                        if (obj.length > 0) {
-                            for (var i = 0; i < obj.length; i++) {
-                                if (angular.isString(obj[i])) {
-                                    fObj[key] = obj[i];
-
-                                    fData = fData.concat($filter('filter')(this.filteredData, fObj));
-                                }
-                            }
-
-                        }
-
-                    }
-                    if (fData.length > 0) {
-                        this.filteredData = fData;
-
-                    }
-                }
-            }
-        };
-
-        if (keyObj) {
-            angular.forEach(keyObj, function(obj, key) {
-
-                filterObj.applyFilter(obj, key);
-            });
-        }
-
-        return filterObj.filteredData;
-    }
-}]);
 
 var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope, $http, NgMap, $q, $timeout, $mdSidenav, $log, $window, $mdDialog, $filter, $location, $rootScope) {
     this.openMenu = function($mdOpenMenu, ev) {
@@ -94,8 +44,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
     $scope.heatmap = false;
     $scope.marqueurs = true;
     $scope.heatmapMarqueurs = [];
-    $scope.heatmapMarqueursCopie = [];
-    $scope.heatmapMarqueursNative = [];
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');
     $scope.cateStyle = [];
@@ -135,19 +83,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
     $scope.resizedClassic = false;
     var xVal = null;
     var hasRegistered = false;
-    /*	$scope.$watch(function() {
-    		if (hasRegistered) return;
-    		hasRegistered = true;
-    		$scope.$$postDigest(function() {
-    			hasRegistered = false;
-
-
-    			if (xVal != $scope.dateSlider){
-    				$scope.dateSlider = xVal;
-    			}
-
-    		});
-    	}); */
     if (window.location.hash == "#debug") {
         $scope.showDebug = true;
     }
@@ -212,7 +147,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             $scope.cates = [];
 
             res.data.cateOrdre.map(function(x, y) {
-
                 $scope.cates[x.ordre] = x.cate;
             });
             $scope.iconCate = [];
@@ -227,10 +161,10 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             $scope.points = [];
             $scope.pointsSmall = [];
             $scope.pointsClassic = [];
-            var id = 0;
-            angular.forEach(res.data.points, function(item) {
-
-                $scope.points.push({
+            $scope.markers = [];
+            $scope.heatmapMarqueurs = [];
+            angular.forEach(res.data.points, function(item, id) {
+                var point = {
                     title: item.cate,
                     id: id,
                     type: "small",
@@ -239,50 +173,26 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                     date: item.date,
                     geoloc: item.geoloc,
                     icon: 'wp-content/themes/ecocitoyen/images/marqueurs/' + $scope.iconCate[item.cate] + '.png'
-                });
-
-
-                id++;
-
-                /*	item.icon = 'wp-content/themes/ecocitoyen/images/marqueurs/'+$scope.iconCate[item.cate]+'_.png';
-                	item.visible=true;
-                	item.title = item.title;
-                	item.type = "small";
-                	item.id=id;
-                	item.title=item.cate;
-                	item.cate = item.cate;
-                	$scope.pointsSmall.push(item);
-                id++;
-                */
-
-
+                };
+                //$scope.points.push(point);
+                $scope.markers[id] = new google.maps.Marker(point);
+                var marker = $scope.markers[id];//$scope == vm(this)
+                var latlng = new google.maps.LatLng(item.geoloc.lat, item.geoloc.lng);
+                marker.setPosition(latlng);
             });
 
 
-
-
-            $scope.pointsBis = [];
-
-
-
-
-            $scope.points.map(function(x, y) {
-                if (x.type == "small") {
+            $scope.markers.forEach(function(x, y) {
+                if (x.type == "small"){
                     $scope.heatmapMarqueurs.push({
                         cate: x.cate,
                         date: x.date,
                         location: new google.maps.LatLng(parseFloat(x.geoloc.lat), parseFloat(x.geoloc.lng)),
-												bis:  new google.maps.LatLng(parseFloat(x.geoloc.lat), parseFloat(x.geoloc.lng)),
-												weight: 1
+						bis:  new google.maps.LatLng(parseFloat(x.geoloc.lat), parseFloat(x.geoloc.lng)),
+						weight: 1
                     });
-
                 }
-
             });
-
-            $scope.heatmapMarqueursCopie = $scope.heatmapMarqueurs;
-
-
 
             $scope.dates = res.data.date;
 
@@ -297,54 +207,10 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 
 
             $timeout.cancel(timerMarqueurs);
-
-
-
-
         });
 
 
         return deferred.promise;
-    };
-    var loadDensite = function($http, $scope) {
-
-        $scope.loading[1] = true;
-        var deferred = $q.defer();
-        var timerDensite = $timeout(function() {
-            $scope.timeoutLoad = true;
-            deferred.reject('Erreur lors du chargement du JSON');
-        }, 30000);
-
-        $http.get('dataDensite.json')
-            .success(function(data) {
-                var cpt = 0;
-                var max = 0;
-                var xo = null;
-                var yo = null;
-                var facteurMult = 8;
-                data.map(function(x, y) {
-                    var o = {
-                        weight: facteurMult * x.weight,
-                        location: new google.maps.LatLng(parseFloat(x.location.lat), parseFloat(x.location.lng))
-                    };
-
-                    $scope.densite.push(o);
-
-
-                    cpt++;
-
-                });
-
-
-
-                deferred.resolve();
-                $scope.loading[1] = false;
-                $timeout.cancel(timerDensite);
-
-            })
-            .error(deferred.reject);
-
-        return deferred.promise
     };
 
     $scope.change = function() {
@@ -361,50 +227,11 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 
     }
 
-
-    var loadSuperficie = function($http) {
-
-        $scope.loading[1] = true;
-        var deferred = $q.defer();
-        var timerDensite = $timeout(function() {
-            $scope.timeoutLoad = true;
-            deferred.reject('Erreur lors du chargement du JSON');
-        }, 30000);
-
-        $http.get('dataSuperficie.json')
-            .success(function(data) {
-                var cpt = 0;
-                var max = 0;
-                var xo = null;
-                var yo = null;
-                var facteurMult = 8;
-                data.map(function(x, y) {
-                    var o = {
-                        weight: facteurMult * x.weight,
-                        location: new google.maps.LatLng(parseFloat(x.location.lat), parseFloat(x.location.lng))
-                    };
-
-                    $scope.superficie.push(o);
-
-
-                    cpt++;
-
-                });
-
-
-                deferred.resolve();
-
-
-            })
-            .error(deferred.reject);
-
-        return deferred.promise
-    };
     var x;
 
 
 
-    $q.all([x = loadMarkers($http, $scope, $rootScope) /*, loadDensite($http), loadSuperficie($http)*/ ]).then(function() {
+    $q.all([x = loadMarkers($http, $scope, $rootScope)]).then(function() {
 
         var heatmapDensite;
         var saveMap = null;
@@ -417,7 +244,7 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
         NgMap.getMap().then(function(map) {
 
             vm.map = map;
-
+            vm.map.markers = $scope.markers;
 
 
             /* Set heatmap densite avec map */
@@ -468,9 +295,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                 $scope.infoRadiusZoom();
             }
 
-
-
-
             vm.placeChanged = function() {
                 vm.place = this.getPlace();
 
@@ -491,8 +315,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 
             };
             vm.hideMarkers = function() {
-
-        
                 $scope.points.map(function(item){
                   item.visible = false;
                 });
@@ -500,99 +322,65 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 
             };
             $scope.info = function() {
-
-						console.log(vm.map);
-
-
+				console.log(vm.map);
             }
-            $scope.sizeCheck = function() {
-
-                if (vm.map.markers != undefined) {
-
-                    if (Object.keys(vm.map.markers).length > 0) {
-                        $scope.loopResize();
-                    }
-
-                }
-
-
-            }
+            /**
+             * This function is called to refresh the markers.
+             * It assumes $scope.map.markers contain the marker to show
+             * 
+             * @return {[type]} [description]
+             */
             $scope.loopResize = function() {
+                console.log('lloop resize');
                 var limit = 14;
                 var currentZoom = vm.map.getZoom();
 
-
                 if (currentZoom > limit && Object.keys(vm.map.markers).length > 0 && (!$scope.resizedClassic || $scope.force)) {
                     // On affiche sans underscore, [gros format et avec icone]
-
                     $scope.filterType = 'classic';
-
-
-												$scope.points.map(function(item){
-												  if (item.icon.indexOf("_") >= 0) {
-
-														item.icon =  $scope.underscore(item.icon, "without");
-
-													}
-
-												});
-
-
-
+					vm.map.markers.forEach(function(item){
+					    if (item.icon.indexOf("_") >= 0) {
+							item.setIcon($scope.underscore(item.icon, "without"));
+						}
+					});
                     $scope.resizedClassic = true;
-										if ($scope.force ){
-												$scope.force = false;
-										}
+					if ($scope.force ){
+						$scope.force = false;
+					}
                     $scope.resizedSmall = false;
                     $scope.currentSize = "classic";
-										if(!$scope.$$phase) {
-		$scope.$apply();
-}
-
+					if(!$scope.$$phase) {
+                		$scope.$apply();
+                    }
                 } else if (currentZoom <= limit && Object.keys(vm.map.markers).length > 0 && (!$scope.resizedSmall || $scope.force)) {
                     // On affiche le petit format
-
-
-
-										$scope.points.map(function(item){
-											if (item.icon.indexOf("_") < 0) {
-												item.icon =  $scope.underscore(item.icon, "with");
-											}
-
-										});
-
-										// Afin de ne pas répeter cette opération à chaque zoom/dézoom on indique qu'on est réduit (small) et on teste ça
-										// On passe resizedClassic à false
-										// On passe le force à false s'il etait true
-                    $scope.resizedSmall = false;
+					vm.map.markers.forEach(function(item,i){
+						if (item.icon.indexOf("_") < 0) {
+                            item.setIcon($scope.underscore(item.icon, "with"));
+						}
+			         });
+					// Afin de ne pas répeter cette opération à chaque zoom/dézoom on indique qu'on est réduit (small) et on teste ça
+					// On passe resizedClassic à false
+					// On passe le force à false s'il etait true
+                    $scope.resizedSmall = true;
                     $scope.resizedClassic = false;
-										if ($scope.force ){
-
-
-												$scope.force = false;
-										}
-
+					if ($scope.force ){
+						$scope.force = false;
+					}
                     $scope.currentSize = "small";
                     $scope.filterType = 'small';
-										if(!$scope.$$phase) {
-  	$scope.$apply();
-}
-
-
-
-
+					if(!$scope.$$phase) {
+                        $scope.$apply();
+                    }
                 }
-
-
-            }
-            $scope.increaseIconSize = function() {
-                for (var key in vm.map.markers) {
-
-                    vm.map.markers[key] = null;
-                    //	vm.map.markers[key].icon.scaledSize = new google.maps.Size(50, 50);
-                    //	vm.map.markers[key].icon.size = new google.maps.Size(50, 50);
-                };
-                $scope.$apply();
+                vm.map.markers.forEach(function(x){
+                    //disabling shit
+                    if(!x.visible){
+                        x.setMap(null);
+                    }else{
+                        x.setMap(vm.map);
+                    }
+                })
             }
             google.maps.event.addListenerOnce(vm.map, 'idle', function() {
                 //$scope.reduceIconSize();
@@ -618,33 +406,14 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                 }
 
             }
-            $scope.$watch('dateSlider', function(newValue) {
-
-							var dataHeatmap = [];
-
-                var dateTampon = [];
-								vm.map.heatmapLayers.poi.getData().forEach(function(item){
-									var itemDate = moment(item.date, "YY/MM/DD");
-									var s = moment($scope.dates[0], "YY/MM/DD");
-									var e = moment(($scope.dates[newValue]), "YY/MM/DD");
-
-
-
-									if (itemDate >= s && itemDate <= e) {
-										item.location = item.bis;
-
-									} else {
-											item.location =new google.maps.LatLng(null, null);
-
-									}
-
-								});
-								vm.map.heatmapLayers.poi.setData(vm.map.heatmapLayers.poi.getData());
-
-								if(!$scope.$$phase) {
-							$scope.$apply();
-							}
-
+            var lastUpdate = Date.now();
+            $scope.$watch('dateSlider', function(newValue){
+                if(Date.now() - lastUpdate > 100){//100ms
+                    $scope.endDate = moment(($scope.dates[newValue]), "YY/MM/DD");
+                    $scope.preRendering();
+                    $scope.loopResize();
+                    lastUpdate = Date.now();
+                }
             });
 
 
@@ -849,6 +618,35 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                 $scope.infoRadiusZoom();
             };
 
+            $scope.categFilter = function(arr){
+                return function(item){
+                    return arr.indexOf(item.title)!=-1;
+                }
+            }
+            $scope.preRendering = function(){
+                var dateOk = $scope.dateRangeFilter('date', $scope.startDate, $scope.endDate);
+                var categOk = $scope.categFilter($scope.filtreArray);
+                vm.map.markers.forEach(function(x,i){
+                    var ok = dateOk(x, i) && categOk(x);
+                    x.visible = !!ok;
+                });
+            }
+            /* Filtre sur la date des marqueurs POI */
+            $scope.dateRangeFilter = function(property, startDate, endDate) {
+                return function(item, i) {
+                    if (item[property] === null || $scope.mapSelector != "poi") return false;
+                    var itemDate = moment(item[property], "YY/MM/DD");
+                    var s = moment(startDate, "YY/MM/DD");
+                    var e = moment(endDate, "YY/MM/DD");
+                    if (itemDate >= s && itemDate <= e){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            $scope.preRendering();
+            $scope.loopResize();
+
         });
 
 
@@ -858,8 +656,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
         vm.changeOpacity = function() {
             heatmapDensite.set('opacity', heatmapDensite.get('opacity') ? null : 0.2);
         }
-
-
 
     });
 
@@ -895,7 +691,8 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             $scope.force = true;
         }
 
-
+        $scope.preRendering();
+        $scope.loopResize();//reload our markers
     }
 
     /* fonction appellée au clic sur une des catégories, permet de gerer le filtre */
@@ -917,44 +714,11 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             $scope.checkboxCate = false;
             $scope.cateStyle[index] = 'unchecked';
         }
-        $scope.heatmapMarqueurs = $filter('filterMultiple')($scope.heatmapMarqueurs, {
-            'cate': $scope.filtreArray
-        });
-
-        //google.maps.event.trigger(vm.map, 'zoom_changed',$scope.force);
-
+        $scope.preRendering();
+        $scope.loopResize();//reload our markers
     }
 
-    /* Filtre sur la date des marqueurs POI */
-    $scope.dateRangeFilter = function(property, startDate, endDate) {
-        return function(item) {
 
-            if (item[property] === null || $scope.mapSelector != "poi") return false;
-
-            var itemDate = moment(item[property], "YY/MM/DD");
-
-            var s = moment($scope.dates[0], "YY/MM/DD");
-            var e = moment(($scope.dates[$scope.dateSlider]), "YY/MM/DD");
-
-            if (itemDate >= s && itemDate <= e)
-                return true;
-
-            return false;
-        }
-    }
-
-    $scope.typeFilter = function(type) {
-        return function(item) {
-            if (type == $scope.filterType) {
-                return true;
-            } else {
-                return false;
-            }
-
-            return false;
-        }
-
-    }
     $scope.init = function() {
         //$scope.force = false;
         if ($scope.dateSlider == null) {

@@ -17,7 +17,7 @@
   <script src="wp-content/themes/ecocitoyen/js/angular-animate.min.js"></script>
   <script src="wp-content/themes/ecocitoyen/js/angular-aria.min.js"></script>
   <script src="wp-content/themes/ecocitoyen/js/angular-messages.min.js"></script>
-  <script src="wp-content/themes/ecocitoyen/js/ng-map.min.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/ng-map.js"></script>
   <!-- Angular Material Library -->
  <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
  <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
@@ -154,15 +154,15 @@
     <md-progress-linear md-mode="indeterminate"></md-progress-linear>
   </div>
   <div style="text-align: center;top: 56px;" ng-show="timeoutLoad" >
-    Une erreur est survenue lors du chargement des données. N'hésitez pas à vous rapprocher de nous afin de nous le remonter.
-    Veuillez nous excuser pour la gêne occassionnée.
+    Une erreur est survenue lors du chargement des données. N'hésitez pas à vous rapprocher de nous afin de nous la remonter.
+    Veuillez nous excuser pour la gêne occasionnée.
   </div>
   <p style="padding:0;    display: inline;" id="laCarte"></p>
   <ng-map style="max-height:850px;" default-style="false" zoom="14" center="{{center}}" lazy-init="true" >
 
   <heatmap-layer   ng-hide="true" ng-show="poiVisible" id="poi" data="heatmapMarqueurs" ></heatmap-layer>
 
-  <marker ng-hide="false" icon="{{point.icon}}"   ng-repeat="point in points  |  filterMultiple:{cate:filtreArray || '!!'} | filter: dateRangeFilter('date', startDate, endDate) | filter:sizeCheck() track by point.id " position="{{point.geoloc.lat}},{{point.geoloc.lng}}"  title="{{point.cate}}"></marker>
+  <!--<marker ng-hide="false" icon="{{point.icon}}"   ng-repeat="point in points  |  filterMultiple:{cate:filtreArray || '!!'} | filter: dateRangeFilter('date', startDate, endDate) | filter:sizeCheck() track by point.id " position="{{point.geoloc.lat}},{{point.geoloc.lng}}"  title="{{point.cate}}"></marker>-->
 </ng-map>
 
               <!--  <div layout="row" flex="noshrink" layout-align="center center" class="layout-align-center-center layout-row flex-noshrink">
