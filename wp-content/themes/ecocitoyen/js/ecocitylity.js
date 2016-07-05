@@ -217,6 +217,7 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
         if ($scope.mapSelector == "poiHeatmap") {
             // On affiche la heatmap POI
             vm.hideMarkers();
+            console.log('enabling');
             $scope.enableHeatmapPoi();
 
         } else if ($scope.mapSelector == "poi") {
@@ -224,7 +225,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             $scope.disabledHeatmapPoi();
             vm.showMarkers();
         }
-
     }
 
     var x;
@@ -305,25 +305,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                 $scope.map.fitBounds(bounds);
                 $scope.map.setZoom(14);
             }
-            vm.showMarkers = function() {
-              $scope.points.map(function(item){
-                item.visible = true
-              });
-
-
-                $scope.poiVisible = true;
-
-            };
-            vm.hideMarkers = function() {
-                $scope.points.map(function(item){
-                  item.visible = false;
-                });
-                $scope.poiVisible = false;
-
-            };
-            $scope.info = function() {
-				console.log(vm.map);
-            }
             /**
              * This function is called to refresh the markers.
              * It assumes $scope.map.markers contain the marker to show
@@ -331,10 +312,20 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
              * @return {[type]} [description]
              */
             $scope.loopResize = function() {
-                console.log('lloop resize');
                 var limit = 14;
                 var currentZoom = vm.map.getZoom();
-
+                if($scope.force){
+                    vm.map.markers.forEach(function(x){
+                        //disabling shit
+                        if(!x.visible){
+                            x.setMap(null);
+                        }else{
+                            if(!x.map){
+                                x.setMap(vm.map);
+                            }
+                        }
+                    })
+                }
                 if (currentZoom > limit && Object.keys(vm.map.markers).length > 0 && (!$scope.resizedClassic || $scope.force)) {
                     // On affiche sans underscore, [gros format et avec icone]
                     $scope.filterType = 'classic';
@@ -349,9 +340,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 					}
                     $scope.resizedSmall = false;
                     $scope.currentSize = "classic";
-					if(!$scope.$$phase) {
-                		$scope.$apply();
-                    }
                 } else if (currentZoom <= limit && Object.keys(vm.map.markers).length > 0 && (!$scope.resizedSmall || $scope.force)) {
                     // On affiche le petit format
 					vm.map.markers.forEach(function(item,i){
@@ -369,24 +357,10 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
 					}
                     $scope.currentSize = "small";
                     $scope.filterType = 'small';
-					if(!$scope.$$phase) {
-                        $scope.$apply();
-                    }
                 }
-                vm.map.markers.forEach(function(x){
-                    //disabling shit
-                    if(!x.visible){
-                        x.setMap(null);
-                    }else{
-                        if(!x.map){
-                            x.setMap(vm.map);
-                        }
-                    }
-                })
             }
             google.maps.event.addListenerOnce(vm.map, 'idle', function() {
                 //$scope.reduceIconSize();
-
                 $scope.force = false;
                 $scope.sauvMarqueur = null;
                 $scope.sauvMarqueur = vm.map.markers;
@@ -395,9 +369,7 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             });
             /* Listener sur le changement de zoom et optimisation du radius pour la heatmap de densite de population */
             google.maps.event.addListener(vm.map, 'zoom_changed', function() {
-
                 $scope.loopResize();
-
             });
             $scope.underscore = function(path, without) {
 
@@ -440,7 +412,7 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             }
 
             $scope.enableHeatmapPoi = function() {
-
+                console.log('hea: ', heatmapPoi, saveMap);
                 heatmapPoi.set('map', saveMap);
                 $scope.heatmapPointsEco = true;
 
@@ -637,12 +609,36 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                 }
             }
             $scope.preRendering = function(){
+                //TODO: 
+                //assumes that
+                // $scope.latMarkers = [] //sorted by asc lat
+                // $scope.lngMarkers = [] //sorted by asc lng exists
+                // 
+                // get the bounding map
+                // var b = map.getBounds();
+                // for(var i = 0; i<latM.length; ++i){
+                //      var m = $scope.latMarkers[i];
+                //      if(m >= latMin && m<=latMax){
+                //          eligibleIds[m.id] = m;
+                //      }
+                //      if(m
+                // }
+                // $scope.latMarkers.forEach(x){
+                //      //then from the end
+                // }
+                // 
+                // $scope.lngMarkers.forEach(x){
+                //      if(x.lat between bounds.lat){
+                //          visibleMarkers[x.id] = x
+                //      }
+                // }
                 var dateOk = $scope.dateRangeFilter('date', $scope.startDate, $scope.endDate);
                 var categOk = $scope.categFilter($scope.filtreArray);
                 vm.map.markers.forEach(function(x,i){
                     var ok = dateOk(x, i) && categOk(x);
                     x.visible = !!ok;
                 });
+                $scope.force = true;
             }
             /* Filtre sur la date des marqueurs POI */
             $scope.dateRangeFilter = function(property, startDate, endDate) {
@@ -661,21 +657,14 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
             $scope.loopResize();
 
         });
-
-
         vm.changeRadius = function() {
             heatmapDensite.set('radius', heatmatDensite.get('radius') ? null : 20);
         }
         vm.changeOpacity = function() {
             heatmapDensite.set('opacity', heatmapDensite.get('opacity') ? null : 0.2);
         }
-
     });
 
-    $scope.filterCustom = ['Relais', 'Poubelle Verre'];
-    $scope.filterExpr = {
-        cate: "Relais"
-    };
     $scope.selectAll = function() {
         $scope.resized = false;
         if ($scope.checkboxCate && $scope.filtreArray.length == 12) {
@@ -684,9 +673,7 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                 $scope.activeButton[y] = "";
                 $scope.cateStyle[y] = 'unchecked';
                 $scope.disabledCheckbox[y] = true;
-
             });
-
             $scope.resized = true;
             $scope.force = false;
         } else {
@@ -698,9 +685,6 @@ var ecocitoyenCtrl = app.controller('ecocitoyenCtrl', function($mdMedia, $scope,
                 $scope.cateStyle[y] = '';
 
             });
-
-
-
             $scope.force = true;
         }
 

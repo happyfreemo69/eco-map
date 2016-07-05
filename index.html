@@ -17,7 +17,7 @@
   <script src="wp-content/themes/ecocitoyen/js/angular-animate.min.js"></script>
   <script src="wp-content/themes/ecocitoyen/js/angular-aria.min.js"></script>
   <script src="wp-content/themes/ecocitoyen/js/angular-messages.min.js"></script>
-  <script src="wp-content/themes/ecocitoyen/js/ng-map.js"></script>
+  <script src="wp-content/themes/ecocitoyen/js/ng-map.min.js"></script>
   <!-- Angular Material Library -->
  <script src="wp-content/themes/ecocitoyen/js/angular-material.min.js"></script>
  <script src="wp-content/themes/ecocitoyen/js/angular-consent.min.js"></script>
@@ -91,49 +91,16 @@
     on-place-changed="vm.placeChanged()" />
   </md-input-container>
   <div style="height: 100%;width:1px;background-color: #d8d8d8;"></div>
-<!--<div  hide-sm  hide-xs class="menu-demo-container" layout-align="center center" layout="column">
-
-                 <md-menu class="menuPartager" >
-      <md-button class="md-raised" aria-label="Open phone interactions menu" class="" ng-click="vm.openMenu($mdOpenMenu, $event)">
-        <md-icon md-menu-origin md-svg-src="wp-content/themes/ecocitoyen/images/icons/share.svg"></md-icon> Partager
-      </md-button>
-      <md-menu-content width="4" class="menuPartager">
-        <md-menu-item>
-          <md-button ng-click="shareFb()">
-            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/facebook.svg" md-menu-align-target></md-icon>
-            Facebook
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button  ng-click="shareTwitter()">
-            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/twitter.svg"></md-icon>
-            Twitter
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button  ng-click="shareUrl()">
-            <md-icon md-svg-src="wp-content/themes/ecocitoyen/images/icons/url.svg"></md-icon>
-            URL
-          </md-button>
-        </md-menu-item>
-
-      </md-menu-content>
-    </md-menu>
-  </div>-->
   <div style="margin-right:8px;height: 100%;width:1px;background-color: #d8d8d8;"></div>
   <div hide-sm  hide-xs    class="containerButtonProject">
     <md-button  ng-click="relouLink()" class="md-raised buttonProject" aria-label="Open phone interactions menu" class=""  >
-    <!--a style="width:100%;height:100%;" ng-if="isTop()" href="http://eco-map.org/leprojet.html" >-->
     <div ng-if="isTop()">
       Le projet >>
     </div>
-<!-- </a> -->
-    <!--  <a style="width:100%,height:100%"  ng-if="isBottom()" > -->
     <div ng-if="isBottom()">
 
       La carte
     </div>
-    <!--</a> -->
   </md-button>
 </div>
 <div hide-gt-sm >
@@ -162,13 +129,7 @@
 
   <heatmap-layer   ng-hide="true" ng-show="poiVisible" id="poi" data="heatmapMarqueurs" ></heatmap-layer>
 
-  <!--<marker ng-hide="false" icon="{{point.icon}}"   ng-repeat="point in points  |  filterMultiple:{cate:filtreArray || '!!'} | filter: dateRangeFilter('date', startDate, endDate) | filter:sizeCheck() track by point.id " position="{{point.geoloc.lat}},{{point.geoloc.lng}}"  title="{{point.cate}}"></marker>-->
 </ng-map>
-
-              <!--  <div layout="row" flex="noshrink" layout-align="center center" class="layout-align-center-center layout-row flex-noshrink">
-
-            </div>-->
-
 
           </md-content>
           <md-sidenav  md-is-locked-open="$mdMedia('gt-sm')" class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
@@ -219,27 +180,10 @@
 <p> Points éco-citoyens </p><md-radio-button value="poi" class="md-primary"></md-radio-button>
 
 </md-list-item>
-<!-- <md-subheader class="md-no-sticky"> Cartes de chaleur</md-subheader>-->
- <!--<md-list-item>
- <md-checkbox class="md-secondary" ng-true-value="true"
-                ng-false-value="false" ng-click="controlHeatmapPoi()" ng-model="heatmapPoiVisible"></md-checkbox>
-    <p> Points écocitoyens </p>
-
-  </md-list-item> -->
-  <md-list-item>
- <!-- <md-checkbox class="md-secondary" ng-true-value="true"
- ng-false-value="false" ng-click="controlHeatmapPoi()" ng-checked="heatmapPoiVisible"></md-checkbox>-->
-
+<md-list-item>
  <p> Carte de densité </p> <md-radio-button value="poiHeatmap" class="md-primary"> </md-radio-button>
 
 </md-list-item>
-  <!--<md-list-item>
-  <md-checkbox class="md-secondary" ng-true-value="true"
-                ng-false-value="false" ng-click="controlHeatmapDensite()" ng-model="heatmapDensiteVisible"></md-checkbox>
-    <p> Densité de population </p>
-
-  </md-list-item>-->
-</md-list>
 {{init()}}
 <div ng-show="showDebug">
   <md-checkbox ng-true-value="true"
@@ -253,8 +197,6 @@ Marqueurs
 <md-button ng-click="infoHeatmap()" >Click</md-button>
 <md-button ng-click="disableMap()" >disableHeatmap</md-button>
 <md-button ng-click="ableMap()" >ableHeatmap</md-button>
-<md-button ng-click="radiusMoins()" >radius -</md-button>
-<md-button ng-click="radiusPlus()" >radius +</md-button>
 <md-button ng-click="info()" >info +</md-button>
 </div>
 </md-content>
