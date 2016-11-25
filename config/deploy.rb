@@ -13,7 +13,7 @@ set :node_env, (fetch(:node_env) || fetch(:stage))
 set :default_env, { node_env: fetch(:node_env) }
 set :linked_files, %w{data.json}
 set :keep_releases, 5
-set :ssh_options, { :forward_agent => true }
+set :ssh_options, { :forward_agent => true, :port => 6543 }
 namespace :deploy do
 
   desc 'select a tag via tag=vxxx or redeploy the running rev'
